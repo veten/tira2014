@@ -6,7 +6,7 @@ package tira2014;
  */
 public class Minimikeko {
 
-    private Node[] taulukko;
+    private Solmu[] taulukko;
     private int heapsize;
 
     /**
@@ -19,7 +19,7 @@ public class Minimikeko {
      * loppuessa
      */
     public Minimikeko(int size) {
-        this.taulukko = new Node[size];
+        this.taulukko = new Solmu[size];
         this.heapsize = -1;
     }
 
@@ -29,11 +29,11 @@ public class Minimikeko {
      *
      * @param solmu kekoon vietävä solmu
      */
-    public void HeapInsert(Node solmu) { 
+    public void HeapInsert(Solmu solmu) { 
         heapsize++;
         int i = heapsize;
         int parent = (i - 1) / 2;
-        while (i > 0 && taulukko[parent].getKey() > solmu.getKey()) {
+        while (i > 0 && taulukko[parent].getAvain() > solmu.getAvain()) {
             //Node talteen = taulukko[i];
             taulukko[i] = taulukko[parent];
             i = parent;
@@ -48,7 +48,7 @@ public class Minimikeko {
      *
      * @return solmu, jolla pienin avain
      */
-    public Node HeapMin() {  
+    public Solmu HeapMin() {  
         if (heapsize >= 0) {
             return taulukko[0];
         } else {
@@ -62,9 +62,9 @@ public class Minimikeko {
      * 
      * @return palauttaa poistamansa solmun, jolla pienen avain
      */
-    public Node HeapDelMin() {  
+    public Solmu HeapDelMin() {  
         if (heapsize >= 0) {
-            Node min = taulukko[0];
+            Solmu min = taulukko[0];
             taulukko[0] = taulukko[heapsize];
             heapsize--;
             Heapify(0);
@@ -95,17 +95,17 @@ public class Minimikeko {
         int right = 2 * (kohta + 1);
         int smaller = right;
         if (right <= heapsize) {
-            if (taulukko[left].getKey() < taulukko[right].getKey()) {
+            if (taulukko[left].getAvain() < taulukko[right].getAvain()) {
                 smaller = left;
             }
-            if (taulukko[kohta].getKey() > taulukko[smaller].getKey()) {
-                Node talteen = taulukko[kohta];
+            if (taulukko[kohta].getAvain() > taulukko[smaller].getAvain()) {
+                Solmu talteen = taulukko[kohta];
                 taulukko[kohta] = taulukko[smaller];
                 taulukko[smaller] = talteen;
                 Heapify(smaller);
             }
-        } else if (left == heapsize && taulukko[kohta].getKey() > taulukko[left].getKey()) {
-            Node talteen = taulukko[kohta];
+        } else if (left == heapsize && taulukko[kohta].getAvain() > taulukko[left].getAvain()) {
+            Solmu talteen = taulukko[kohta];
             taulukko[kohta] = taulukko[left];
             taulukko[left] = talteen;
         }
