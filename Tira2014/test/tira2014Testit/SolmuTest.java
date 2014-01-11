@@ -53,6 +53,6 @@ public class SolmuTest {
      */
     @Test
     public void solmuStringiksiTest() {
-        assertEquals("Solmu[avain: 12, arvo: A, ascii: 65]", solmu.toString());
+        assertEquals("Solmu[avain: 12, kirjain: A, ascii: 65]", solmu.toString());
     }
 }

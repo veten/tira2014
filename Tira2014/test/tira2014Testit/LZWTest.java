@@ -1,12 +1,13 @@
 package tira2014Testit;
 
-import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import tira2014.HuffmanPakkaaja;
+import tira2014.HuffmanPurkaja;
 import tira2014.LZWPakkaaja;
 import tira2014.LZWPurkaja;
 import tira2014.TiedostonKasittelija;
@@ -48,37 +49,55 @@ public class LZWTest {
      * tekstin alkuperäiseksi.
      */
     @Test
-    public void pakkaaJaPuraTest() {
-        ArrayList<Integer> pakattu = pakkaaja.lZWPakkaa("Kissalan pojat!");
-        LZWPurkaja purkaja = new LZWPurkaja(pakattu);
+    public void pakkaaJaPuraTest() throws Exception {
+        String syote = "kissa kissa kissa kissa kakak kkakakkhkjhjhkjhjkhlhhlhldxtrffuyy  7ty7t67 6ws6"
+                + "dytgdfytf u ftudtu  y yt y ";
+        kasittelija.tallennaTiedosto("src/lzwkissa.txt", syote);
+        int[] pakattu = pakkaaja.lZWPakkaa(syote);
+        kasittelija.tallennaTavuittain("src/lzwkissatavu.txt", pakattu);
+        LZWPurkaja purkaja = new LZWPurkaja(kasittelija.lueTiedostoTavuittain("src/lzwkissatavu.txt"));
         String purettu = purkaja.lZWPuraKoodi();
-        assertEquals("Kissalan pojat!", purettu);
-    }
-
-    /**
-     * Metodi tarkistaa, että pakkaajan ja purkajan muodostamat kirjastot ovat
-     * identtiset. Pakkaaja muodostaa oman kirjastonsa pakkauksen yhteydessä ja
-     * purkaja puolestaan omansa purkamisen yhteydessä.
-     */
-    @Test
-    public void vertaaKirjastojaTest() {
-        ArrayList<Integer> pakattu = pakkaaja.lZWPakkaa("Tässä jotain tekstiä ihan vaan testimielessä..");
-        LZWPurkaja purkaja = new LZWPurkaja(pakattu);
-        String purettu = purkaja.lZWPuraKoodi();
-        assertEquals(pakkaaja.getArrayKirjasto(), purkaja.getArrayKirjasto());
+        System.out.println(purkaja.getKirjasto().length);
+        assertEquals(syote, purettu);
     }
 
     /**
      * Metodi tastaa isomman syötteen tapauksen.
      */
     @Test
-    public void pakkaaJaPuraTiedostoTest() {
-        String syote = kasittelija.lueTiedosto("src/kalevala.txt");
-        ArrayList<Integer> pakattu = pakkaaja.lZWPakkaa(syote);
-        LZWPurkaja purkaja = new LZWPurkaja(pakattu);
+    public void pakkaaJaPuraTiedostoTest() throws Exception {
+
+        String syote = kasittelija.lueTiedosto("src/tito.txt");
+        int[] pakattu = pakkaaja.lZWPakkaa(syote);
+        kasittelija.tallennaTavuittain("src/lzwpakattuengkalevalatavu.txt", pakattu);
+        LZWPurkaja purkaja = new LZWPurkaja(kasittelija.lueTiedostoTavuittain("src/lzwpakattuengkalevalatavu.txt"));
         String purettu = purkaja.lZWPuraKoodi();
+        kasittelija.tallennaTiedosto("src/lzwpakattujapurettuengkalevala.txt", purettu);
+        for (int i = 0; i < pakkaaja.getKirjasto().length; i++) {
+            System.out.print(pakkaaja.getKirjasto()[i] + ",");
+        }
+        System.out.println("-----");
+        for (int i = 0; i < purkaja.getKirjasto().length; i++) {
+            System.out.print(purkaja.getKirjasto()[i] + ",");
+        }
+        assertArrayEquals(pakkaaja.getKirjasto(), purkaja.getKirjasto());
         assertEquals(syote, purettu);
-        System.out.println(pakattu.size()); // => 2623
-        System.out.println(syote.length()); // => 7006
+        
+    }
+
+    @Test
+    public void lzwPlusHuffmanTest() throws Exception {
+
+        String syote = kasittelija.lueTiedosto("src/kalevala.txt");
+        int[] pakattu = pakkaaja.lZWPakkaa(syote);
+        kasittelija.tallennaTavuittain("src/lzwpakattukalevalatavu2.txt", pakattu);
+        HuffmanPakkaaja huffmanpakkaaja = new HuffmanPakkaaja(null);
+        int[] huff = huffmanpakkaaja.huffmanPakkaa(kasittelija.lueTiedostoTavuittain("src/lzwpakattukalevalatavu2.txt"));
+        kasittelija.tallennaTavuittain("src/huffmanpakattukalevalatavu.txt", huff);
+        HuffmanPurkaja huffmanpurkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/huffmanpakattukalevalatavu.txt"), huffmanpakkaaja.getTree());
+        String huffmanpurettu = huffmanpurkaja.huffmanPuraKoodi();
+        LZWPurkaja lzwpurkaja = new LZWPurkaja(huffmanpurettu);
+        String lzwpurettu = lzwpurkaja.lZWPuraKoodi();
+        assertEquals(syote, lzwpurettu);
     }
 }

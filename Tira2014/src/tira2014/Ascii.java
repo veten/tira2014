@@ -30,7 +30,7 @@ public class Ascii {
      *
      * @return laskutoimituksen vastaus
      */
-    private long positiivinenPotenssi(int luku, int potenssi) {
+    public long positiivinenPotenssi(int luku, int potenssi) {
         if (potenssi > 0) {
             long palautettava = luku;
             for (int i = 2; i <= potenssi; i++) {
@@ -71,4 +71,36 @@ public class Ascii {
         }
         return -1;
     }
+
+        public int muunnaBittijonoKokonaisluvuksi(String bitit) {
+        int summa = 0;
+        for (int i = 0; i < bitit.length(); i++) {
+            summa += (positiivinenPotenssi(2, i) * Integer.parseInt(bitit.charAt(bitit.length() - 1 - i) + ""));
+        }
+        return summa;
+    }
+
+    
+        public int[] muunnaBittiJonoKokonaislukutaulukoksi(String bitit) {
+        int viimeisenPituus = bitit.length() % 8;
+        int[] palautettava;
+        if (viimeisenPituus != 0) {
+            palautettava = new int[bitit.length() / 8 + 2];
+        } else {
+            palautettava = new int[bitit.length() / 8 + 1];
+        }
+        int indeksi = 0;
+
+        for (int i = 0; i <= bitit.length() - 8; i += 8) {
+            palautettava[indeksi] = muunnaBittijonoKokonaisluvuksi(bitit.substring(i, i + 8));
+            indeksi++;
+        }
+        if (viimeisenPituus != 0) {
+            palautettava[indeksi] = muunnaBittijonoKokonaisluvuksi(bitit.substring(bitit.length() - viimeisenPituus));
+            indeksi++;
+        }
+        palautettava[indeksi] = viimeisenPituus; // viimeisenä on vajaan tavun pituus..        
+        return palautettava;
+    }
+
 }

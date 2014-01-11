@@ -1,7 +1,5 @@
 package tira2014;
 
-import java.util.ArrayList;
-
 /**
  * Luokka luo LZWpurkaja-olioita, jotka purkavat saamansa LZWPakatun syötteen
  * käyttäen LZW algoritmia.
@@ -9,13 +7,19 @@ import java.util.ArrayList;
 public class LZWPurkaja {
 
     private String[] kirjasto;
-    private ArrayList<String> arrayKirjasto; // alustavan version kirjasto..
-    private ArrayList<Integer> syotelista;
+    private int seuraavaKirjastonPaikka;
+    private String bitit;
+    private int bittienMaara;
+    private Ascii ascii;
+//    private int[] syotteenIndeksit;
 
-    public LZWPurkaja(ArrayList<Integer> syotelista) {
-        this.kirjasto = new String[2 * syotelista.size()];  // koko vaatii vielä tarkennusta..
-        this.arrayKirjasto = new ArrayList<String>();
-        this.syotelista = syotelista;
+    public LZWPurkaja(String bitit) {
+        this.ascii = new Ascii();
+        this.bitit = bitit;
+        this.bittienMaara = 7;
+        this.seuraavaKirjastonPaikka = 0;
+//        this.syotteenIndeksit = new int[syote.length() / 2];
+        this.kirjasto = new String[200]; //new String[puraSyoteIndeksitTaulukkoon() + 1];  // tuplavastuulla..
         lisaaYhdenMittaiset();
     }
 
@@ -25,15 +29,38 @@ public class LZWPurkaja {
     private void lisaaYhdenMittaiset() {
         String merkit = new Ascii().getMerkisto();
         for (int i = 0; i < merkit.length(); i++) {
-//            dictionary[i] = merkit.charAt(i) + "";
-            arrayKirjasto.add(merkit.charAt(i) + "");
+            kirjasto[i] = merkit.charAt(i) + "";
+            seuraavaKirjastonPaikka++;
         }
     }
 
-    public ArrayList<String> getArrayKirjasto() {
-        return arrayKirjasto;
+    public String[] getKirjasto() {
+        return kirjasto;
     }
 
+    private void kasvataKirjastoa() {
+        String[] talteen = kirjasto;
+        kirjasto = new String[2 * talteen.length];
+        System.arraycopy(talteen, 0, kirjasto, 0, talteen.length);
+    }
+
+//    private int puraSyoteIndeksitTaulukkoon() {
+//        String intti = "";
+//        int indeksi = 0;
+//        for (int i = 0; i < syote.length(); i++) {
+//            if (syote.charAt(i) == '.') {
+//                syotteenIndeksit[indeksi] = -1;
+//                return Integer.parseInt(syote.substring(i + 1));
+//            } else if (syote.charAt(i) != ',') {
+//                intti += syote.charAt(i);
+//            } else {
+//                syotteenIndeksit[indeksi] = Integer.parseInt(intti);
+//                intti = "";
+//                indeksi++;
+//            }
+//        }
+//        return -1;
+//    }
     /**
      * Metodi purkaa koodin takaisin merkkijonoksi, jonka se palauttaa.
      * Purkamisen yhteydessä metodi lisää kirjastoon uusia merkkijonoja,
@@ -45,17 +72,29 @@ public class LZWPurkaja {
     public String lZWPuraKoodi() {
         String palautettava = "";
         int i = 0;
-        while (i < syotelista.size() - 1) {
-            palautettava += arrayKirjasto.get(syotelista.get(i));
-            if (arrayKirjasto.size() <= syotelista.get(i + 1)) {
-                arrayKirjasto.add(arrayKirjasto.get(syotelista.get(i)).charAt(0) + "");
+        while (i < bitit.length() - (2 * bittienMaara)) {
+            String sana = kirjasto[ascii.muunnaBittijonoKokonaisluvuksi(bitit.substring(i, i + bittienMaara))];
+            palautettava += sana;
+            int seuraavanIndeksi = ascii.muunnaBittijonoKokonaisluvuksi(bitit.substring(i + bittienMaara, i
+                    + (bittienMaara * 2)));
+            if (seuraavaKirjastonPaikka <= seuraavanIndeksi) {
+                kirjasto[seuraavaKirjastonPaikka] = sana.charAt(0) + "";
             } else {
-                arrayKirjasto.add(arrayKirjasto.get(syotelista.get(i))
-                        + arrayKirjasto.get(syotelista.get(i + 1)).charAt(0));
+                char kirjain = kirjasto[seuraavanIndeksi].charAt(0);
+                kirjasto[seuraavaKirjastonPaikka] = sana + kirjain;
             }
-            i++;
+            seuraavaKirjastonPaikka++;
+            i += bittienMaara;
+            if (seuraavaKirjastonPaikka >= ascii.positiivinenPotenssi(2, bittienMaara)) {
+                bittienMaara++;
+//                i++;
+            }
+            if (seuraavaKirjastonPaikka >= kirjasto.length - 1) {
+                kasvataKirjastoa();
+            }
         }
-        palautettava += arrayKirjasto.get(syotelista.get(i));
+        palautettava += kirjasto[ascii.muunnaBittijonoKokonaisluvuksi(bitit.substring(i, i + bittienMaara))];
+        palautettava += kirjasto[ascii.muunnaBittijonoKokonaisluvuksi(bitit.substring(i + bittienMaara))];
         return palautettava;
     }
 }

@@ -1,5 +1,7 @@
 package tira2014Testit;
 
+import java.io.File;
+import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -58,15 +60,19 @@ public class HuffmanTest {
      * versiossa vielä pakattuun tekstiin koodaamatta.
      */
     @Test
-    public void pakkaaJaPuraTest() {
-        String syote = "Kissalan pojat taas vauhdissako?";
-        String pakattu = tuntematonPakkaaja.huffmanPakkaa(syote);
-        HuffmanPurkaja purkaja = new HuffmanPurkaja(pakattu, tuntematonPakkaaja.getTree());
+    public void pakkaaJaPuraTest() throws Exception {
+        String syote = "Kissalan pojat taas vauhdissako? taasko ne on, vai?";
+        int[] pakattu = tuntematonPakkaaja.huffmanPakkaa(syote);
+        kasittelija.tallennaTiedosto("src/kissalanorm.txt", syote);
+        kasittelija.tallennaTavuittain("src/kissalatavu.txt", pakattu);
+        HuffmanPurkaja purkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/kissalatavu.txt"), tuntematonPakkaaja.getTree());
         String purettu = purkaja.huffmanPuraKoodi();
         assertEquals(syote, purettu);
-        double pakkausKokoProsentteina = (double) pakattu.length() / (syote.length() * 8);
-        assertTrue(pakkausKokoProsentteina < 0.6);
-        System.out.println(pakkausKokoProsentteina);
+        long tavu = new File("src/kissalatavu.txt").length();
+        long txt = new File("src/kissalanorm.txt").length();
+        double suhdeluku = (double) tavu / txt;
+        System.out.println("kissalatest pakkauskoko " + suhdeluku);
+        assertTrue(suhdeluku < 0.6);
     }
 
     /**
@@ -77,15 +83,19 @@ public class HuffmanTest {
      * versiossa vielä pakattuun tekstiin koodaamatta.
      */
     @Test
-    public void pakkaaJaPura2Test() {
-        String syote = "toinen syöte testaus..";
-        String pakattu = tuntematonPakkaaja.huffmanPakkaa(syote);
-        HuffmanPurkaja purkaja = new HuffmanPurkaja(pakattu, tuntematonPakkaaja.getTree());
+    public void pakkaaJaPuraKalevalaTest() throws Exception {
+        String syote = kasittelija.lueTiedosto("src/kalevala.txt");
+        int[] pakattu = tuntematonPakkaaja.huffmanPakkaa(syote);
+        kasittelija.tallennaTavuittain("src/kalevalatavu.txt", pakattu);
+
+        HuffmanPurkaja purkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/kalevalatavu.txt"), tuntematonPakkaaja.getTree());
         String purettu = purkaja.huffmanPuraKoodi();
         assertEquals(syote, purettu);
-        double pakkausKokoProsentteina = (double) pakattu.length() / (syote.length() * 8);
-        assertTrue(pakkausKokoProsentteina < 0.6);
-        System.out.println(pakkausKokoProsentteina);
+        long tavu = new File("src/kalevalatavu.txt").length();
+        long txt = new File("src/kalevala.txt").length();
+        double suhdeluku = (double) tavu / txt;
+        System.out.println("kalevalatest pakkauskoko " + suhdeluku);
+        assertTrue(suhdeluku < 0.6);
     }
 
     /**
@@ -96,15 +106,19 @@ public class HuffmanTest {
      * puuntiedot on tässä versiossa vielä pakattuun tekstiin koodaamatta.
      */
     @Test
-    public void pakkaaJaPuraTiedostoTest() {
+    public void pakkaaJaPuraTitoTest() throws IOException {
         String syote = kasittelija.lueTiedosto("src/tito.txt");
-        String pakattu = tuntematonPakkaaja.huffmanPakkaa(syote);
-        HuffmanPurkaja purkaja = new HuffmanPurkaja(pakattu, tuntematonPakkaaja.getTree());
+        int[] pakattu = tuntematonPakkaaja.huffmanPakkaa(syote);
+        kasittelija.tallennaTavuittain("src/titotavu.txt", pakattu);
+
+        HuffmanPurkaja purkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/titotavu.txt"), tuntematonPakkaaja.getTree());
         String purettu = purkaja.huffmanPuraKoodi();
         assertEquals(syote, purettu);
-        double pakkausKokoProsentteina = (double) pakattu.length() / (syote.length() * 8);
-        assertTrue(pakkausKokoProsentteina < 0.6);
-        System.out.println(pakkausKokoProsentteina);
+        long tavu = new File("src/titotavu.txt").length();
+        long txt = new File("src/tito.txt").length();
+        double suhdeluku = (double) tavu / txt;
+        System.out.println("titotest pakkauskoko " + suhdeluku);
+        assertTrue(suhdeluku < 0.6);
     }
 
     /**
@@ -117,15 +131,21 @@ public class HuffmanTest {
      * todennäköisyyksiä ei ole analysoituna.
      */
     @Test
-    public void pakkaaJaPuraEnglanninKielellaTest() {
+    public void pakkaaJaPuraEnglanninKielellaTest() throws IOException {
         String syote = kasittelija.lueTiedosto("src/engKielinenSyote.txt");
-        String pakattu = englanninPakkaaja.huffmanPakkaa(syote);
-        HuffmanPurkaja purkaja = new HuffmanPurkaja(pakattu, englanninPakkaaja.getTree());
+        int[] pakattu = englanninPakkaaja.huffmanPakkaa(syote);
+        kasittelija.tallennaTavuittain("src/engKielinentavu.txt", pakattu);
+
+        HuffmanPurkaja purkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/engKielinentavu.txt"), englanninPakkaaja.getTree());
         String purettu = purkaja.huffmanPuraKoodi();
         assertEquals(syote, purettu);
-        double pakkausKokoProsentteina = (double) pakattu.length() / (syote.length() * 8);
-        System.out.println(pakkausKokoProsentteina);
-//        assertTrue(pakkausKokoProsentteina < 0.6);
+        long tavu = new File("src/engKielinentavu.txt").length();
+        long txt = new File("src/engkielinenSyote.txt").length();
+        double suhdeluku = (double) tavu / txt;
+        System.out.println("englannin kielinentest pakkauskoko engkielisellä pakkaajalla " + suhdeluku);
+//        System.out.println(tavu);
+//        System.out.println(txt);
+//        assertTrue(suhdeluku < 0.6);
     }
 
     /**
@@ -138,14 +158,41 @@ public class HuffmanTest {
      * todennäköisyyksiä ei ole analysoituna.
      */
     @Test
-    public void pakkaaJaPuraSuomenKielellaTest() {
+    public void pakkaaJaPuraSuomenKielellaTest() throws IOException {
         String syote = kasittelija.lueTiedosto("src/tito.txt");
-        String pakattu = suomenPakkaaja.huffmanPakkaa(syote);
-        HuffmanPurkaja purkaja = new HuffmanPurkaja(pakattu, suomenPakkaaja.getTree());
+        int[] pakattu = suomenPakkaaja.huffmanPakkaa(syote);
+        kasittelija.tallennaTavuittain("src/titotavusuomi.txt", pakattu);
+
+        HuffmanPurkaja purkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/titotavusuomi.txt"), suomenPakkaaja.getTree());
         String purettu = purkaja.huffmanPuraKoodi();
         assertEquals(syote, purettu);
-        double pakkausKokoProsentteina = (double) pakattu.length() / (syote.length() * 8);
-        System.out.println(pakkausKokoProsentteina);
-//        assertTrue(pakkausKokoProsentteina < 0.6);
+        long tavu = new File("src/titotavusuomi.txt").length();
+        long txt = new File("src/tito.txt").length();
+        double suhdeluku = (double) tavu / txt;
+        System.out.println("titotest suomenkielisellä pakkaajalla pakkauskoko " + suhdeluku);
+//        System.out.println(tavu);
+//        System.out.println(txt);
+//        assertTrue(suhdeluku < 0.6);
+
     }
+
+ @Test
+    public void pakkaaJaPuraEnglanninKielella2Test() throws IOException {
+        String syote = kasittelija.lueTiedosto("src/engkalevala.txt");
+        int[] pakattu = englanninPakkaaja.huffmanPakkaa(syote);
+        kasittelija.tallennaTavuittain("src/engkalevalatavueng.txt", pakattu);
+
+        HuffmanPurkaja purkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/engkalevalatavueng.txt"), englanninPakkaaja.getTree());
+        String purettu = purkaja.huffmanPuraKoodi();
+        assertEquals(syote, purettu);
+        long tavu = new File("src/engkalevalatavueng.txt").length();
+        long txt = new File("src/engkalevala.txt").length();
+        double suhdeluku = (double) tavu / txt;
+        System.out.println("engkalevalatest eng kielellä pakkauskoko" + suhdeluku);
+//        System.out.println(tavu);
+//        System.out.println(txt);
+//        assertTrue(suhdeluku < 0.6);
+    }
+
+
 }

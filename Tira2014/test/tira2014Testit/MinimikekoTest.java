@@ -45,12 +45,12 @@ public class MinimikekoTest {
      */
     @Test
     public void keonTayttoTest() {
-        keko.HeapInsert(new Solmu(7, 'x'));
-        keko.HeapInsert(new Solmu(1, 'r'));
-        keko.HeapInsert(new Solmu(5, 'k'));
-        keko.HeapInsert(new Solmu(3, 'a'));
-        keko.HeapInsert(new Solmu(5, 'w'));
-        assertEquals(1, keko.HeapMin().getAvain());
+        keko.lisaaKekoon(new Solmu(7, 'x'));
+        keko.lisaaKekoon(new Solmu(1, 'r'));
+        keko.lisaaKekoon(new Solmu(5, 'k'));
+        keko.lisaaKekoon(new Solmu(3, 'a'));
+        keko.lisaaKekoon(new Solmu(5, 'w'));
+        assertEquals(1, keko.palautaPienin().getAvain());
     }
 
     /**
@@ -61,21 +61,21 @@ public class MinimikekoTest {
     @Test
     public void keonTyhjennysTest() {
         keonTayttoTest();
-        assertEquals(1, keko.HeapMin().getAvain());
-        assertEquals(1, keko.HeapDelMin().getAvain());
-        assertEquals(3, keko.HeapMin().getAvain());
-        assertEquals(3, keko.HeapDelMin().getAvain());
+        assertEquals(1, keko.palautaPienin().getAvain());
+        assertEquals(1, keko.palautaJaPoistaPienin().getAvain());
+        assertEquals(3, keko.palautaPienin().getAvain());
+        assertEquals(3, keko.palautaJaPoistaPienin().getAvain());
 
-        keko.HeapInsert(new Solmu(11, 'g'));
-        keko.HeapInsert(new Solmu(2, 'p'));
+        keko.lisaaKekoon(new Solmu(11, 'g'));
+        keko.lisaaKekoon(new Solmu(2, 'p'));
 
-        assertEquals(2, keko.HeapMin().getAvain());
-        assertEquals(2, keko.HeapDelMin().getAvain());
-        assertEquals(5, keko.HeapMin().getAvain());
-        assertEquals(5, keko.HeapDelMin().getAvain());
-        assertEquals(5, keko.HeapDelMin().getAvain());
-        assertEquals(7, keko.HeapDelMin().getAvain());
-        assertEquals(11, keko.HeapDelMin().getAvain());
-        assertEquals(null, keko.HeapMin());
+        assertEquals(2, keko.palautaPienin().getAvain());
+        assertEquals(2, keko.palautaJaPoistaPienin().getAvain());
+        assertEquals(5, keko.palautaPienin().getAvain());
+        assertEquals(5, keko.palautaJaPoistaPienin().getAvain());
+        assertEquals(5, keko.palautaJaPoistaPienin().getAvain());
+        assertEquals(7, keko.palautaJaPoistaPienin().getAvain());
+        assertEquals(11, keko.palautaJaPoistaPienin().getAvain());
+        assertEquals(null, keko.palautaPienin());
     }
 }

@@ -107,6 +107,6 @@ public class Solmu {
 
     @Override
     public String toString() {
-        return "Solmu[avain: " + avain + ", arvo: " + kirjain + ", ascii: " + kirjaimenAsciiKoodi + "]";
+        return "Solmu[avain: " + avain + ", kirjain: " + kirjain + ", ascii: " + kirjaimenAsciiKoodi + "]";
     }
 }

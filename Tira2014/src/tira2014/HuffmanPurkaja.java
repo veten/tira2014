@@ -22,6 +22,8 @@ public class HuffmanPurkaja {
         this.puu = puu;
     }
 
+    
+    
     /**
      * Metodi purkaa koodin takaisin merkkijonoksi, jonka se palauttaa.
      *

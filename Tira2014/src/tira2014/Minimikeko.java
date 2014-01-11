@@ -1,55 +1,78 @@
 package tira2014;
 
 /**
- * Minimikeko-luokka luo minimikeon, johon voidaan lisätä alkioita ja josta voidaan ottaa pois alkioita koko
- * järjestyksessä siten, että aina saadaan pienin alkio poistettua joukosta.
+ * Minimikeko-luokka luo minimikeon, johon voidaan lisätä alkioita ja josta
+ * voidaan ottaa pois alkioita koko järjestyksessä siten, että aina saadaan
+ * pienin alkio poistettua joukosta.
  */
 public class Minimikeko {
 
     private Solmu[] taulukko;
-    private int heapsize;
+    private int keonKoko;
 
     /**
-     * Konstruktorissa keolle annetaan keon maksimi koko ja alustetaan viimeisimmän alkion kohta.
-     * Keko toteutetaan taulukolla, josta vain osa kuuluu kulloinkin itse kekoon. Heapsizella määritetään
-     * viimeisin taulukon kohta, joka kuuluu kekoon. Jos taulukko tulee täyteen, täytyy luoda uusi isompi 
-     * keko ja kopioida kaikki arvot siihen ennen keon käytön jatkamista.
+     * Konstruktorissa keolle annetaan keon maksimi koko ja alustetaan
+     * viimeisimmän alkion kohta. Keko toteutetaan taulukolla, josta vain osa
+     * kuuluu kulloinkin itse kekoon. KeonKoko:lla määritetään viimeisin
+     * taulukon kohta, joka kuuluu kekoon. Jos taulukko tulee täyteen, täytyy
+     * luoda uusi isompi keko ja kopioida kaikki arvot siihen ennen keon käytön
+     * jatkamista.
      *
-     * @param size taulukon koko, joka määrittää keon maksimikoon, mutta jota tarvittaessa kasvatetaan tilan 
-     * loppuessa
+     * @param koko taulukon koko, joka määrittää keon maksimikoon, mutta jota
+     * tarvittaessa kasvatetaan tilan loppuessa
      */
-    public Minimikeko(int size) {
-        this.taulukko = new Solmu[size];
-        this.heapsize = -1;
+    public Minimikeko(int koko) {
+        this.taulukko = new Solmu[koko];
+        this.keonKoko = -1;
     }
 
     /**
-     * Metodi lisää kekoon uuden solmun ja asettaa sen keossa oikealle paikalleen.
-     * Aikavaativuus: O(log n).
+     * Vaihtoehtoisessa konstruktorissa keolle annetaan valmis Solmu-taulukko.
+     * Tätä vaihtoehtoa käytetään Huffman-purkajassa, jolle annetussa koodissa
+     * on mukana keon tiedot.
+     *
+     * @param taulukko valmiiksi luotu keon Solmu-taulukko
+     */
+    public Minimikeko(Solmu[] taulukko) {
+        this.taulukko = taulukko;
+        this.keonKoko = taulukko.length - 1;
+    }
+
+    public Solmu[] getTaulukko() {
+        return taulukko;
+    }
+
+    /**
+     * Metodi lisää kekoon uuden solmun ja asettaa sen keossa oikealle
+     * paikalleen.
      *
      * @param solmu kekoon vietävä solmu
      */
-    public void HeapInsert(Solmu solmu) { 
-        heapsize++;
-        int i = heapsize;
-        int parent = (i - 1) / 2;
-        while (i > 0 && taulukko[parent].getAvain() > solmu.getAvain()) {
-            //Node talteen = taulukko[i];
-            taulukko[i] = taulukko[parent];
-            i = parent;
-            parent = (i - 1) / 2;
+    public void lisaaKekoon(Solmu solmu) {
+        keonKoko++;
+        if (keonKoko > taulukko.length) {
+            Solmu[] kopio = taulukko;
+            taulukko = new Solmu[keonKoko * 2];
+            taulukko = kopio;
+        }
+        int i = keonKoko;
+        int vanhempi = (i - 1) / 2;
+        while (i > 0 && taulukko[vanhempi].getAvain() > solmu.getAvain()) {
+            taulukko[i] = taulukko[vanhempi];
+            i = vanhempi;
+            vanhempi = (i - 1) / 2;
         }
         taulukko[i] = solmu;
     }
 
     /**
-     * Metodi palauttaa minimikeon päällimmäisen, eli pienimmän avaimen omaavan solmun
-     * keosta. Aikavaativuus: O(1).
+     * Metodi palauttaa minimikeon päällimmäisen, eli pienimmän avaimen omaavan
+     * solmun keosta.
      *
      * @return solmu, jolla pienin avain
      */
-    public Solmu HeapMin() {  
-        if (heapsize >= 0) {
+    public Solmu palautaPienin() {
+        if (keonKoko >= 0) {
             return taulukko[0];
         } else {
             return null;
@@ -57,17 +80,17 @@ public class Minimikeko {
     }
 
     /**
-     * Metodi poistaa koesta solmun, jolla pienin avainarvo sekä palauttaa tämän solmun.
-     * Lisäksi metodi korjaa keon rakenteen takaisin minimikeoksi. Aikavaativuus: O(log n).
-     * 
+     * Metodi poistaa koesta solmun, jolla pienin avainarvo sekä palauttaa tämän
+     * solmun. Lisäksi metodi korjaa keon rakenteen takaisin minimikeoksi.
+     *
      * @return palauttaa poistamansa solmun, jolla pienen avain
      */
-    public Solmu HeapDelMin() {  
-        if (heapsize >= 0) {
+    public Solmu palautaJaPoistaPienin() {
+        if (keonKoko >= 0) {
             Solmu min = taulukko[0];
-            taulukko[0] = taulukko[heapsize];
-            heapsize--;
-            Heapify(0);
+            taulukko[0] = taulukko[keonKoko];
+            keonKoko--;
+            korjaaKeko(0);
             return min;
         } else {
             return null;
@@ -75,40 +98,41 @@ public class Minimikeko {
     }
 
     /**
-     * Metodi palauttaa kekoon kuuluvan taulukon viimeisimmän alkion indeksikohdan.
+     * Metodi palauttaa kekoon kuuluvan taulukon viimeisimmän alkion
+     * indeksikohdan.
      *
-     * @return -1, jos keko on tyhjä ja muulloin keossa olevien alkioiden määrä miinus yksi,
-     * eli keon alimmaisen alkion indeksikohta taulukossa
+     * @return -1, jos keko on tyhjä ja muulloin keossa olevien alkioiden määrä
+     * miinus yksi, eli keon alimmaisen alkion indeksikohta taulukossa
      */
-    public int getHeapsize() {
-        return heapsize;
+    public int getKeonKoko() {
+        return keonKoko;
     }
 
     /**
-     * Metodi korjaa keon keko-ominaisuuden, eli järjestää alkiot niin, että solmun lasten avainten arvot 
-     * on aina suuremmat kuin vanhemmallansa. Aikavaativuus: O(log n).
+     * Metodi korjaa keon keko-ominaisuuden, eli järjestää alkiot niin, että
+     * solmun lasten avainten arvot on aina suuremmat kuin vanhemmallansa.
+     * Aikavaativuus: O(log n).
      *
      * @param kohta korjaa keon rekursiivisesti tästä solmusta alaspäin.
      */
-    private void Heapify(int kohta) { 
-        int left = 2 * (kohta + 1) - 1;
-        int right = 2 * (kohta + 1);
-        int smaller = right;
-        if (right <= heapsize) {
-            if (taulukko[left].getAvain() < taulukko[right].getAvain()) {
-                smaller = left;
+    private void korjaaKeko(int kohta) {
+        int vasen = 2 * (kohta + 1) - 1;
+        int oikea = 2 * (kohta + 1);
+        int pienempi = oikea;
+        if (oikea <= keonKoko) {
+            if (taulukko[vasen].getAvain() < taulukko[oikea].getAvain()) {
+                pienempi = vasen;
             }
-            if (taulukko[kohta].getAvain() > taulukko[smaller].getAvain()) {
+            if (taulukko[kohta].getAvain() > taulukko[pienempi].getAvain()) {
                 Solmu talteen = taulukko[kohta];
-                taulukko[kohta] = taulukko[smaller];
-                taulukko[smaller] = talteen;
-                Heapify(smaller);
+                taulukko[kohta] = taulukko[pienempi];
+                taulukko[pienempi] = talteen;
+                korjaaKeko(pienempi);
             }
-        } else if (left == heapsize && taulukko[kohta].getAvain() > taulukko[left].getAvain()) {
+        } else if (vasen == keonKoko && taulukko[kohta].getAvain() > taulukko[vasen].getAvain()) {
             Solmu talteen = taulukko[kohta];
-            taulukko[kohta] = taulukko[left];
-            taulukko[left] = talteen;
+            taulukko[kohta] = taulukko[vasen];
+            taulukko[vasen] = talteen;
         }
-
     }
 }

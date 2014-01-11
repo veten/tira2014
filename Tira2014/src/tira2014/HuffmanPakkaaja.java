@@ -12,6 +12,7 @@ public class HuffmanPakkaaja {
     private Minimikeko keko;
     private Puu tree;
     private boolean tiheydetTarvitaan;
+    private Ascii ascii;
 
     /**
      * Konstruktorissa pakkaaja-oliolle annetaan merkkien
@@ -26,6 +27,7 @@ public class HuffmanPakkaaja {
      * laskien.
      */
     public HuffmanPakkaaja(int[] todennakoisyydet) {
+        this.ascii = new Ascii();
         if (todennakoisyydet != null) {
             this.tiheys = todennakoisyydet;
             this.kirjain = KirjainTodennakoisyydet.kirjaimet();
@@ -64,6 +66,10 @@ public class HuffmanPakkaaja {
         return tiheys;
     }
 
+    public char[] getKirjain() {
+        return kirjain;
+    }
+
     /**
      * Metodi luo solmut ja lisää minimikekoon. Lisäksi solmut lisätään
      * erilliseen solmulistaan, johon siis jokaiselle merkille muodostetaan oma
@@ -77,10 +83,32 @@ public class HuffmanPakkaaja {
         for (int i = 0; i < tiheys.length; i++) {
             Solmu solmussa = new Solmu(tiheys[i], kirjain[i]);
             if (tiheys[i] > 0) {
-                keko.HeapInsert(solmussa);
+                keko.lisaaKekoon(solmussa);
             }
             solmut[i] = solmussa;
         }
+        if (tiheydetTarvitaan) {
+            tallennaKekoStringiksi();
+        }
+    }
+
+    /**
+     * Metodi tallentaa täytetyn keon taulukon solmuista niiden avaimet ja
+     * kirjaimet merkkijonoksi, joka liitetään tiedostoon tallennettavaan
+     * merkkijonoon, jos tiheydet on tarvittu. Tästä saadaan konstruoitua
+     * Huffman purkajassa puu koodin purkua varten.
+     *
+     * @return keon taulukko Stringinä
+     */
+    public String tallennaKekoStringiksi() {
+        String palautettava = "";
+        int indeksi = 0;
+        while (indeksi <= keko.getKeonKoko()) {
+            palautettava += keko.getTaulukko()[indeksi].getAvain();
+            palautettava += keko.getTaulukko()[indeksi].getKirjain();
+            indeksi++;
+        }
+        return palautettava;
     }
 
     /**
@@ -89,15 +117,15 @@ public class HuffmanPakkaaja {
      */
     private void taytaPuu() {
         while (true) {
-            Solmu eka = keko.HeapDelMin();
-            Solmu toka = keko.HeapDelMin();
+            Solmu eka = keko.palautaJaPoistaPienin();
+            Solmu toka = keko.palautaJaPoistaPienin();
             Solmu parentti = new Solmu(eka.getAvain() + toka.getAvain(), '*');
             parentti.setVasen(eka);
             parentti.setOikea(toka);
             eka.setVanhempi(parentti);
             toka.setVanhempi(parentti);
-            if (keko.getHeapsize() >= 0) {
-                keko.HeapInsert(parentti);
+            if (keko.getKeonKoko() >= 0) {
+                keko.lisaaKekoon(parentti);
             } else {
                 tree.setJuuri(parentti);
                 break;
@@ -111,16 +139,16 @@ public class HuffmanPakkaaja {
      * binäärikoodit.
      *
      * @param solmu solmu, jolle koodi lisätään
-     * @param code koodi, joka solmuun lisätään
-     * @param parent solmun vanhempi
+     * @param koodi koodi, joka solmuun lisätään
+     * @param vanhempi solmun vanhempi
      *
      */
-    private void lisaaSolmuilleKoodit(Solmu solmu, String code, Solmu parent) {
+    private void lisaaSolmuilleKoodit(Solmu solmu, String koodi, Solmu vanhempi) {
         if (solmu != null) {
-            lisaaSolmuilleKoodit(solmu.getVasen(), code + "0", solmu);
-            lisaaSolmuilleKoodit(solmu.getOikea(), code + "1", solmu);
+            lisaaSolmuilleKoodit(solmu.getVasen(), koodi + "0", solmu);
+            lisaaSolmuilleKoodit(solmu.getOikea(), koodi + "1", solmu);
         } else {
-            parent.setHuffmanKoodi(code.substring(0, code.length() - 1));
+            vanhempi.setHuffmanKoodi(koodi.substring(0, koodi.length() - 1));
         }
     }
 
@@ -148,23 +176,25 @@ public class HuffmanPakkaaja {
      *
      * @return palauttaa syötteen pakattuna binäärimuotoon
      */
-    public String huffmanPakkaa(String syote) {
+    public int[] huffmanPakkaa(String syote) {
         taytaKeko(syote);
         taytaPuu();
-        String palautettava = "";
+        String bitit = "";
 
         for (int i = 0; i < syote.length(); i++) {
             int j = 0;
             while (j < solmut.length) {
                 if (syote.charAt(i) == solmut[j].getKirjain()) {
-                    palautettava += solmut[j].getHuffmanKoodi();
+                    bitit += solmut[j].getHuffmanKoodi();
                     break;
                 }
                 j++;
             }
         }
-        return palautettava;
+        return ascii.muunnaBittiJonoKokonaislukutaulukoksi(bitit);
     }
+
+
 
     public Puu getTree() {
         return tree;
