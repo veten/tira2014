@@ -33,9 +33,9 @@ public class Minimikeko {
      *
      * @param taulukko valmiiksi luotu keon Solmu-taulukko
      */
-    public Minimikeko(Solmu[] taulukko) {
+    public Minimikeko(Solmu[] taulukko, int keonKoko) {
         this.taulukko = taulukko;
-        this.keonKoko = taulukko.length - 1;
+        this.keonKoko = keonKoko;
     }
 
     public Solmu[] getTaulukko() {

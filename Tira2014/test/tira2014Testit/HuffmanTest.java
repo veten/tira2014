@@ -84,17 +84,17 @@ public class HuffmanTest {
      */
     @Test
     public void pakkaaJaPuraKalevalaTest() throws Exception {
-        String syote = kasittelija.lueTiedosto("src/kalevala.txt");
+        String syote = kasittelija.lueTiedosto("src/weso2.txt");
         int[] pakattu = tuntematonPakkaaja.huffmanPakkaa(syote);
-        kasittelija.tallennaTavuittain("src/kalevalatavu.txt", pakattu);
+        kasittelija.tallennaTavuittain("src/weso2tavu.txt", pakattu);
 
-        HuffmanPurkaja purkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/kalevalatavu.txt"), tuntematonPakkaaja.getTree());
+        HuffmanPurkaja purkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/weso2tavu.txt"), tuntematonPakkaaja.getTree());
         String purettu = purkaja.huffmanPuraKoodi();
         assertEquals(syote, purettu);
-        long tavu = new File("src/kalevalatavu.txt").length();
-        long txt = new File("src/kalevala.txt").length();
+        long tavu = new File("src/weso2tavu.txt").length();
+        long txt = new File("src/weso2.txt").length();
         double suhdeluku = (double) tavu / txt;
-        System.out.println("kalevalatest pakkauskoko " + suhdeluku);
+        System.out.println("weso2test pakkauskoko " + suhdeluku);
         assertTrue(suhdeluku < 0.6);
     }
 

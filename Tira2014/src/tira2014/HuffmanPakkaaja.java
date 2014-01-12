@@ -10,9 +10,9 @@ public class HuffmanPakkaaja {
     private char[] kirjain;
     private Solmu[] solmut;
     private Minimikeko keko;
-    private Puu tree;
+    private Puu puu;
     private boolean tiheydetTarvitaan;
-    private Ascii ascii;
+    private MerkkienKasittelija ascii;
 
     /**
      * Konstruktorissa pakkaaja-oliolle annetaan merkkien
@@ -27,7 +27,7 @@ public class HuffmanPakkaaja {
      * laskien.
      */
     public HuffmanPakkaaja(int[] todennakoisyydet) {
-        this.ascii = new Ascii();
+        this.ascii = new MerkkienKasittelija();
         if (todennakoisyydet != null) {
             this.tiheys = todennakoisyydet;
             this.kirjain = KirjainTodennakoisyydet.kirjaimet();
@@ -39,7 +39,7 @@ public class HuffmanPakkaaja {
         }
         this.solmut = new Solmu[101];
         this.keko = new Minimikeko(200);
-        this.tree = new Puu();
+        this.puu = new Puu();
     }
 
     /**
@@ -48,7 +48,7 @@ public class HuffmanPakkaaja {
      * @param syote merkkijono, josta merkkien tiheydet lasketaan
      */
     private void laskeTiheydet(String syote) {
-        String merkit = new Ascii().getMerkisto();
+        String merkit = new MerkkienKasittelija().getMerkisto();
         for (int i = 0; i < syote.length(); i++) {
             int j = 0;
             while (j < merkit.length()) {
@@ -88,7 +88,7 @@ public class HuffmanPakkaaja {
             solmut[i] = solmussa;
         }
         if (tiheydetTarvitaan) {
-            tallennaKekoStringiksi();
+            tallennaKekoLukutaulukoksi();
         }
     }
 
@@ -96,18 +96,21 @@ public class HuffmanPakkaaja {
      * Metodi tallentaa täytetyn keon taulukon solmuista niiden avaimet ja
      * kirjaimet merkkijonoksi, joka liitetään tiedostoon tallennettavaan
      * merkkijonoon, jos tiheydet on tarvittu. Tästä saadaan konstruoitua
-     * Huffman purkajassa puu koodin purkua varten.
+     * Huffman purkajassa puu koodin purkua varten. Tämä ei vielä tunnu toimivan..
      *
      * @return keon taulukko Stringinä
      */
-    public String tallennaKekoStringiksi() {
-        String palautettava = "";
+    public int[] tallennaKekoLukutaulukoksi() {
+        int[] palautettava = new int[(keko.getKeonKoko()+1) * 2 + 1];
         int indeksi = 0;
+        int i = 0;
         while (indeksi <= keko.getKeonKoko()) {
-            palautettava += keko.getTaulukko()[indeksi].getAvain();
-            palautettava += keko.getTaulukko()[indeksi].getKirjain();
+            palautettava[i] = keko.getTaulukko()[indeksi].getAvain();
+            palautettava[i + 1] = keko.getTaulukko()[indeksi].getKirjaimenASciiKoodi();
             indeksi++;
+            i += 2;
         }
+        palautettava[indeksi] = 0;
         return palautettava;
     }
 
@@ -115,7 +118,7 @@ public class HuffmanPakkaaja {
      * Metodissa täytetään puu rakenne minimikekoa hyväksi käyttäen.
      *
      */
-    private void taytaPuu() {
+    public void taytaPuu() {
         while (true) {
             Solmu eka = keko.palautaJaPoistaPienin();
             Solmu toka = keko.palautaJaPoistaPienin();
@@ -127,11 +130,11 @@ public class HuffmanPakkaaja {
             if (keko.getKeonKoko() >= 0) {
                 keko.lisaaKekoon(parentti);
             } else {
-                tree.setJuuri(parentti);
+                puu.setJuuri(parentti);
                 break;
             }
         }
-        lisaaSolmuilleKoodit(tree.getJuuri(), "", null);
+        lisaaSolmuilleKoodit(puu.getJuuri(), "", null);
     }
 
     /**
@@ -191,12 +194,19 @@ public class HuffmanPakkaaja {
                 j++;
             }
         }
-        return ascii.muunnaBittiJonoKokonaislukutaulukoksi(bitit);
+        int[] koodi = ascii.muunnaBittiJonoKokonaislukutaulukoksi(bitit);
+//        int[] puunTiedot = tallennaKekoLukutaulukoksi();
+//        System.out.println(puunTiedot[0]);
+//        System.out.println(puunTiedot[1]);
+        
+//        int[] palautettava = new int[koodi.length + puunTiedot.length];
+//        System.arraycopy(puunTiedot, 0, palautettava, 0, puunTiedot.length);
+//        System.arraycopy(koodi, 0, palautettava, puunTiedot.length, koodi.length);
+
+        return koodi;// palautettava;
     }
 
-
-
     public Puu getTree() {
-        return tree;
+        return puu;
     }
 }

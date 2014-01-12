@@ -10,7 +10,6 @@ package tira2014;
  * esim. välilyönnit, pisteet ja pilkut ovat merkittävästi yleisempiä.
  */
 public class KirjainTodennakoisyydet {
-//        merkisto = "ÅÄÖåäö !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_´abcdefghijklmnopqrstuvwxyz{|}~";
 
     public static int[] englanti = {2, 2, 2, 2, 2, 2, 169, 4, 3, 1, 1, 1, 1, 1, 4, 4, 1, 1, 9, 4, 5, 1, 3, 3,
         3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 1, 1, 1, 4, 1, 8167, 1492, 2782, 4253, 12702, 2228, 2015, 6094, 6966,
@@ -29,7 +28,7 @@ public class KirjainTodennakoisyydet {
      */
     public static char[] kirjaimet() {
         char[] taulukko = new char[101];
-        String merkit = new Ascii().getMerkisto();
+        String merkit = new MerkkienKasittelija().getMerkisto();
         for (int i = 0; i < merkit.length(); i++) {
             taulukko[i] = merkit.charAt(i);
         }

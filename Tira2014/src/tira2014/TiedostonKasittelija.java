@@ -31,7 +31,7 @@ public class TiedostonKasittelija {
         }
         while (lukija.hasNextLine()) {
             palautus += lukija.nextLine();
-            palautus += "\n";
+//            palautus += "\n";
         }
         lukija.close();
         return palautus;

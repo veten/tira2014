@@ -6,20 +6,20 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tira2014.Ascii;
+import tira2014.MerkkienKasittelija;
 
 /**
  * Luokka testaa Ascii-luokan metodeja.
  */
 public class AsciiTest {
 
-    private Ascii ascii;
+    private MerkkienKasittelija ascii;
 
     /**
      * Alustetaan attribuutti.
      */
     public AsciiTest() {
-        ascii = new Ascii();
+        ascii = new MerkkienKasittelija();
     }
 
     @BeforeClass

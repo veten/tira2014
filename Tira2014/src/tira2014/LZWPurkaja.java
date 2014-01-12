@@ -10,16 +10,14 @@ public class LZWPurkaja {
     private int seuraavaKirjastonPaikka;
     private String bitit;
     private int bittienMaara;
-    private Ascii ascii;
-//    private int[] syotteenIndeksit;
+    private MerkkienKasittelija ascii;
 
     public LZWPurkaja(String bitit) {
-        this.ascii = new Ascii();
+        this.ascii = new MerkkienKasittelija();
         this.bitit = bitit;
         this.bittienMaara = 7;
         this.seuraavaKirjastonPaikka = 0;
-//        this.syotteenIndeksit = new int[syote.length() / 2];
-        this.kirjasto = new String[200]; //new String[puraSyoteIndeksitTaulukkoon() + 1];  // tuplavastuulla..
+        this.kirjasto = new String[128]; 
         lisaaYhdenMittaiset();
     }
 
@@ -27,7 +25,7 @@ public class LZWPurkaja {
      * Metodi lisää kirjastoon kaikki yhden merkin mittaiset merkkijonot.
      */
     private void lisaaYhdenMittaiset() {
-        String merkit = new Ascii().getMerkisto();
+        String merkit = new MerkkienKasittelija().getMerkisto();
         for (int i = 0; i < merkit.length(); i++) {
             kirjasto[i] = merkit.charAt(i) + "";
             seuraavaKirjastonPaikka++;
@@ -44,23 +42,6 @@ public class LZWPurkaja {
         System.arraycopy(talteen, 0, kirjasto, 0, talteen.length);
     }
 
-//    private int puraSyoteIndeksitTaulukkoon() {
-//        String intti = "";
-//        int indeksi = 0;
-//        for (int i = 0; i < syote.length(); i++) {
-//            if (syote.charAt(i) == '.') {
-//                syotteenIndeksit[indeksi] = -1;
-//                return Integer.parseInt(syote.substring(i + 1));
-//            } else if (syote.charAt(i) != ',') {
-//                intti += syote.charAt(i);
-//            } else {
-//                syotteenIndeksit[indeksi] = Integer.parseInt(intti);
-//                intti = "";
-//                indeksi++;
-//            }
-//        }
-//        return -1;
-//    }
     /**
      * Metodi purkaa koodin takaisin merkkijonoksi, jonka se palauttaa.
      * Purkamisen yhteydessä metodi lisää kirjastoon uusia merkkijonoja,
@@ -87,7 +68,6 @@ public class LZWPurkaja {
             i += bittienMaara;
             if (seuraavaKirjastonPaikka >= ascii.positiivinenPotenssi(2, bittienMaara)) {
                 bittienMaara++;
-//                i++;
             }
             if (seuraavaKirjastonPaikka >= kirjasto.length - 1) {
                 kasvataKirjastoa();

@@ -8,13 +8,13 @@ public class LZWPakkaaja {
 
     private String[] kirjasto;
     private int seuraavaKirjastonPaikka;
-    private Ascii ascii;
+    private MerkkienKasittelija ascii;
     private int bittienMaara;
 
     public LZWPakkaaja() {
-        this.kirjasto = new String[200];
+        this.kirjasto = new String[128];
         this.seuraavaKirjastonPaikka = 0;
-        this.ascii = new Ascii();
+        this.ascii = new MerkkienKasittelija();
         this.bittienMaara = 7;
         lisaaYhdenMittaiset();
     }
@@ -23,7 +23,7 @@ public class LZWPakkaaja {
      * Metodi lisää kirjastoon kaikki yhden merkin mittaiset merkkijonot.
      */
     private void lisaaYhdenMittaiset() {
-        String merkit = new Ascii().getMerkisto();
+        String merkit = new MerkkienKasittelija().getMerkisto();
         for (int i = 0; i < merkit.length(); i++) {
             kirjasto[i] = merkit.charAt(i) + "";
             seuraavaKirjastonPaikka++;
@@ -34,6 +34,10 @@ public class LZWPakkaaja {
         return kirjasto;
     }
 
+    /**
+     * Metodi etsii kirjastosta merkkijonoa ja palauttaa kirjaston indeksin.
+     *
+     */
     private int etsiKirjastonIndeksi(String testaus) {
         for (int i = 0; i < kirjasto.length; i++) {
             if (testaus.equals(kirjasto[i])) {
@@ -43,21 +47,23 @@ public class LZWPakkaaja {
         return -1;
     }
 
+    /**
+     * Metodi tuplaa kirjaston koon.
+     *
+     */
     private void kasvataKirjastoa() {
         String[] talteen = kirjasto;
         kirjasto = new String[2 * talteen.length];
         System.arraycopy(talteen, 0, kirjasto, 0, talteen.length);
     }
 
-    private int laskeBittienMaara(int luku) { //? tällä hetkellä tarpeeton..
-        int laskuri = 0;
-        while (luku >= 128) {
-            luku /= 2;
-            laskuri++;
-        }
-        return laskuri + 7;
-    }
-
+    /**
+     * Metodi muuntaa luvun biteiksi.
+     *
+     * @param luku lukuarvo, joka muunnetaan biteiksi.
+     *
+     * @return palauttaa bitit String muodossa
+     */
     public String muunnaBiteiksi(int luku) {
         String bitit = "";
         for (int i = bittienMaara - 1; i >= 0; i--) {

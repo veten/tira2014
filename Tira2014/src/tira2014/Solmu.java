@@ -102,7 +102,7 @@ public class Solmu {
     }
 
     private int kirjainASciiKoodiksi() {
-        return new Ascii().merkkiAsciiKoodiksi(kirjain);
+        return new MerkkienKasittelija().merkkiAsciiKoodiksi(kirjain);
     }
 
     @Override

@@ -6,8 +6,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tira2014.HuffmanPakkaaja;
-import tira2014.HuffmanPurkaja;
 import tira2014.LZWPakkaaja;
 import tira2014.LZWPurkaja;
 import tira2014.TiedostonKasittelija;
@@ -67,37 +65,32 @@ public class LZWTest {
     @Test
     public void pakkaaJaPuraTiedostoTest() throws Exception {
 
-        String syote = kasittelija.lueTiedosto("src/tito.txt");
+        String syote = kasittelija.lueTiedosto("src/tiraht.txt");
         int[] pakattu = pakkaaja.lZWPakkaa(syote);
-        kasittelija.tallennaTavuittain("src/lzwpakattuengkalevalatavu.txt", pakattu);
-        LZWPurkaja purkaja = new LZWPurkaja(kasittelija.lueTiedostoTavuittain("src/lzwpakattuengkalevalatavu.txt"));
+        kasittelija.tallennaTavuittain("src/lzwpakattutiraht.txt", pakattu);
+        LZWPurkaja purkaja = new LZWPurkaja(kasittelija.lueTiedostoTavuittain("src/lzwpakattutiraht.txt"));
         String purettu = purkaja.lZWPuraKoodi();
-        kasittelija.tallennaTiedosto("src/lzwpakattujapurettuengkalevala.txt", purettu);
-        for (int i = 0; i < pakkaaja.getKirjasto().length; i++) {
-            System.out.print(pakkaaja.getKirjasto()[i] + ",");
-        }
-        System.out.println("-----");
-        for (int i = 0; i < purkaja.getKirjasto().length; i++) {
-            System.out.print(purkaja.getKirjasto()[i] + ",");
-        }
+        kasittelija.tallennaTiedosto("src/lzwpakattujapurettutiraht.txt", purettu);
+        
         assertArrayEquals(pakkaaja.getKirjasto(), purkaja.getKirjasto());
         assertEquals(syote, purettu);
         
     }
 
-    @Test
-    public void lzwPlusHuffmanTest() throws Exception {
+        @Test
+    public void pakkaaJaPuraTiedosto2Test() throws Exception {
 
-        String syote = kasittelija.lueTiedosto("src/kalevala.txt");
+        String syote = kasittelija.lueTiedosto("src/engkalevala.txt");
         int[] pakattu = pakkaaja.lZWPakkaa(syote);
-        kasittelija.tallennaTavuittain("src/lzwpakattukalevalatavu2.txt", pakattu);
-        HuffmanPakkaaja huffmanpakkaaja = new HuffmanPakkaaja(null);
-        int[] huff = huffmanpakkaaja.huffmanPakkaa(kasittelija.lueTiedostoTavuittain("src/lzwpakattukalevalatavu2.txt"));
-        kasittelija.tallennaTavuittain("src/huffmanpakattukalevalatavu.txt", huff);
-        HuffmanPurkaja huffmanpurkaja = new HuffmanPurkaja(kasittelija.lueTiedostoTavuittain("src/huffmanpakattukalevalatavu.txt"), huffmanpakkaaja.getTree());
-        String huffmanpurettu = huffmanpurkaja.huffmanPuraKoodi();
-        LZWPurkaja lzwpurkaja = new LZWPurkaja(huffmanpurettu);
-        String lzwpurettu = lzwpurkaja.lZWPuraKoodi();
-        assertEquals(syote, lzwpurettu);
+        kasittelija.tallennaTavuittain("src/lzwpakattuengkalevala.txt", pakattu);
+        LZWPurkaja purkaja = new LZWPurkaja(kasittelija.lueTiedostoTavuittain("src/lzwpakattuengkalevala.txt"));
+        String purettu = purkaja.lZWPuraKoodi();
+        kasittelija.tallennaTiedosto("src/lzwpakattujapurettuengkalevala.txt", purettu);
+            System.out.println(purkaja.getKirjasto().length);
+            System.out.println(syote.length());
+        assertArrayEquals(pakkaaja.getKirjasto(), purkaja.getKirjasto());
+        assertEquals(syote, purettu);
+        
     }
+    
 }
