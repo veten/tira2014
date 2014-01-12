@@ -1,0 +1,1499 @@
+T‰m‰ materiaali on lisensoitu Creative Commons BY-NC-SA-lisenssill‰, joten voit k‰ytt‰‰ ja levitt‰‰ sit‰ vapaasti, kunhan alkuper‰isten tekijˆiden nimi‰ ei poisteta. Jos teet muutoksia materiaaliin ja haluat levitt‰‰ muunneltua versiota, se t‰ytyy lisensoida samanlaisella vapaalla lisenssill‰. Materiaalien k‰yttˆ kaupalliseen tarkoitukseen on ilman erillist‰ lupaa kielletty.
+
+Web-selainohjelmointi
+
+Materiaali
+
+Teht‰v‰t
+
+
+Lukijalle
+
+T‰m‰ materiaali on tarkoitettu Helsingin yliopiston tietojenk‰sittelytieteen laitoksen syksyn 2012 kurssille web-selainohjelmointi. Materiaalin kirjoittaja on Arto Vihavainen ja sen syntyyn ovat vaikuttaneet useat tahot, joista t‰rkein on Mikael Nousiainen. Iso kiitos kuuluu myˆs Kasper Hirvikoskelle. Kurssia web-selainohjelmointi on edelt‰nyt aiemmin j‰rjestetty kurssi Digitaalisen Median tekniikat, jonka t‰m‰ kurssi korvaa. "DiMe"-kurssin viimeisten vet‰jien Samuli Kaipiaisen ja Matti Paksulan henki kuitenkin el‰‰ kurssilla.
+
+Materiaali p‰ivittyy kurssin edetess‰. Osa teht‰vist‰ on osana materiaalia, osa taas linkkein‰ omille sivuilleen. Teht‰vien lis‰ksi materiaali sis‰lt‰‰ kysymysmerkill‰ merkittyj‰ pohdi-kohtia, joissa p‰‰see pohtimaan juuri tutuksi tullutta asiaa esimerkin kautta. Lampuilla merkityt kohdat taas sis‰lt‰v‰t mm. arvokkaita vinkkej‰ erilaisista tyˆkaluista.
+
+Lue materiaalia siten, ett‰ teet samalla itse kaikki lukemasi esimerkit. Esimerkkeihin kannattaa tehd‰ pieni‰ muutoksia ja tarkkailla, miten muutokset vaikuttavat ohjelman toimintaan. ƒkkiselt‰‰n voisi luulla, ett‰ esimerkkien tekeminen ja muokkaaminen hidastaa opiskelua. T‰m‰ ei kuitenkaan pid‰ ollenkaan paikkansa. Oppiminen perustuu oleellisesti aktiiviseen tekemiseen ja rutiinin kasvattamiseen. Esimerkkien ja erityisesti omien kokeilujen tekeminen on parhaita tapoja sis‰ist‰‰ luettua. Muista ett‰ copy-paste ei ole oppimisen kannalta yht‰ tehokasta kuin itse kirjoittaminen.
+
+Pyri tekem‰‰n tai ainakin yritt‰m‰‰n teht‰vi‰ sit‰ mukaa kuin luet teksti‰. Jos et osaa heti tehd‰ jotain teht‰v‰‰, ‰l‰ masennu, sill‰ saat ohjausaikoina neuvoja teht‰vien tekemiseen.
+
+Teksti‰ ei ole tarkoitettu vain kertaalleen luettavaksi. Joudut varmasti myˆhemmin palaamaan aiemmin lukemiisi kohtiin tai aiemmin tekemiisi teht‰viin. T‰m‰ materiaali ei sis‰ll‰ kaikkea oleellista web-selainohjelmointiin liittyv‰‰. T‰ll‰ hetkell‰ ei ole oikeastaan mit‰‰n kirjaa josta lˆytyisi kaikki oleellinen. Joudut kurssin aikana ja urallasi etsim‰‰n tietoa myˆs omatoimisesti. Harjoitukset ja materiaali sis‰lt‰v‰t jo jonkin verran ohjeita, mist‰ suunnista tietoa kannattaa l‰hte‰ hakemaan.
+
+Jos (ja kun) materiaalista lˆytyy esimerkiksi kirjoitusvirheit‰, raportoikaa niist‰ esimerkiksi kurssikanavalla. Kiitos bugien ja ongelmien korjauksesta kuuluu jo nyt seuraaville nimimerkeille: pro_, gleant, BiQ, Absor, Rase, jombo, BearGrylls, Marko, _jumi_, Semilia ja mluukkai.
+
+Miksi selainohjelmointia?
+
+Ensimm‰isell‰ luennolla..
+
+Tools of the trade
+
+K‰yd‰‰n l‰pi pikaisesti oleellisia tyˆkaluja.
+
+Web-selainten tarjoamat kehitt‰jien tyˆkalut
+
+Ohjelmien debuggaaminen on oleellinen taito. Selainohjelmistot pyˆriv‰t selaimessa, joten luonnollinen paikka niiden debuggaamiseen on selaimessa. Esimerkiksi google chrome ja mozilla firefox tarjoavat debuggausymp‰ristˆt, joilla voi tutkia sivuja. Debuggausymp‰ristˆt aukeavat yleens‰ nappia f12-painamalla. Oleellisin osio lienee konsoli, mist‰ n‰kee esimerkiksi JavaScript-suorituksessa tapahtuvat virheviestit.
+
+Omiin sovelluksiin voi myˆs lis‰t‰ debuggauskomentoja. Esimerkiksi komento console.log("viesti"); osana JavaScript-kutsua lis‰‰ konsoliin viestin "viesti". Sovelluksen debuggaus viestien avulla on hyv‰ aloituskohta rikkin‰isten sovellusten korjaamiselle..
+
+Tutustu Chrome Developer Toolseihin osoitteessa https://developers.google.com/chrome-developer-tools/
+
+NetBeans
+
+Kurssilla k‰ytet‰‰n oletuksena NetBeans-ohjelmointiymp‰ristˆ‰. Laitoksen koneille on asennettuna versio 7.2, mutta versiossa 7.3 tulee viel‰ parempi tuki HTML5:lle. Kurssin teht‰v‰t palautetaan myˆs TMC:n kautta. Jos et halua k‰ytt‰‰ NetBeansia, teht‰v‰t voi palauttaa myˆs TMC:n webbisivuilta.
+
+Huom! Toisin kuin aiemmalla web-palvelinohjelmointi -kurssilla, t‰ll‰ kurssilla TMC ei tarkasta teht‰vien oikeellisuutta. Palauttaessasi teht‰v‰n lupaat sen olevan oikein.
+
+Another easy start..
+
+Huom! T‰ss‰ kurssiversiossa TMC ei tarkasta teht‰vien oikeellisuutta. Palauttamalla t‰m‰n teht‰v‰n vakuutat ja vannot ett‰ jatkossa palauttamasi teht‰v‰t ovat parhaan ymm‰rryksesi mukaan ratkaistu oikein, ja ne toimivat kuten teht‰v‰nannoissa on pyydetty.
+
+Lue osoitteessa http://www.cs.helsinki.fi/group/java/s12-wepa/#w1e1 oleva teht‰v‰ "NetBeansin ja TMCn asennus". Jos et ole jo asentanut NetBeansia ja TMC:t‰, asenna ne, ja rekisterˆidy TMC:hen. Kurssille rekisterˆityminen tapahtuu kun palautat t‰m‰n teht‰v‰n.
+
+Huom! Valitse TMC:ss‰ kurssiksi s2012-weso.
+
+Huom, aiemman toisto! T‰ss‰ kurssiversiossa TMC ei tarkasta teht‰vien oikeellisuutta. Palauttamalla t‰m‰n teht‰v‰n vakuutat ja vannot ett‰ jatkossa palauttamasi teht‰v‰t ovat parhaan ymm‰rryksesi mukaan ratkaistu oikein, ja ne toimivat kuten teht‰v‰nannoissa on pyydetty.
+
+Internet
+
+Web on t‰ynn‰ selainohjelmointiin liittyvi‰ artikkeleita. Oikeasti! Haku lauseella "html5 introduction" palauttaa hieman yli 17000 sivua. Jos avainsanat ovat erikseen, tuloksia on yli 10 miljoonaa. Kun teet kurssin teht‰vi‰, k‰yt‰ googlea avuksi. T‰t‰ materiaalia ei yritet‰k‰‰n rakentaa kaiken kattavaksi, vaan joudut etsim‰‰n tietoa myˆs internetist‰.
+
+Jos mietit ett‰ miten vaikkapa article-elementille asetetaan reunat, voit googlettaa esimerkiksi avainsanoilla "html5 article css border". Ensimm‰isen kymmenen artikkelin joukossa on (l‰hes) varmasti sinua auttava artikkeli. Itseasiassa, informaation hakeminen netist‰ on taito siin‰ miss‰ ohjelmointikin -- sit‰ kannattaa ja pit‰‰ harjoitella.
+
+HTML
+
+HTML on kieli web-sivustojen luomiseen. HTML ei ole ohjelmointikieli, vaan kuvauskieli, jonka avulla kuvataan sek‰ web-sivun rakenne ett‰ sivun sis‰lt‰m‰ teksti. HTML-sivujen rakenne m‰‰ritell‰‰n HTML-kieless‰ m‰‰ritellyill‰ elementeill‰, ja yksitt‰inen HTML-dokumentti koostuu sis‰kk‰in ja per‰kk‰in olevista elementeist‰.
+
+Sivujen rakenteen m‰‰rittelev‰t elementit erotellaan normaalista tekstist‰ pienempi kuin (<) ja suurempi kuin (>) -merkeill‰. Elementti avataan elementin nimen sis‰lt‰v‰ll‰ pienempi kuin -merkill‰ alkavalla ja suurempi kuin -merkkiin loppuvalla merkkijonolla, esim. <html>, ja suljetaan merkkijonolla jossa elementin pienempi kuin -merkin j‰lkeen on vinoviiva, esim </html>. Yksitt‰isen elementin sis‰lle voi laittaa muita elementtej‰, ja elementti tulee sulkea aina lopuksi. Jos elementti ei sis‰ll‰ muita elementtej‰ tai teksti‰, voi sen avata ja sulkea yksitt‰isell‰ komennolla, esim. <br/>.
+
+HTML-dokumentin runko
+
+Tyypillisen HTML-dokumentin runko n‰ytt‰‰ seuraavalta:
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    	<title>Selaimen palkissa ja suosikeissa n‰kyv‰ otsikko</title>
+    </head>
+    <body>
+
+        <h1>Sivulla n‰kyv‰ otsikko</h1>
+
+        <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.</p>
+
+    </body>
+</html>
+Yll‰ olevassa HTML-dokumentissa on dokumentin tyypin kertova erikoiselementti <!DOCTYPE html>, joka kertoo dokumentin olevan HTML-sivu. T‰t‰ seuraa elementti <html>, joka aloittaa HTML-dokumentin. Elementti <html> sis‰lt‰‰ yleens‰ kaksi elementti‰, elementit <head> ja <body>. Elementti <head> sis‰lt‰‰ sivun otsaketiedot, eli esimerkiksi sivun k‰ytt‰m‰n merkistˆn <meta charset="utf-8" /> ja otsikon <title>. Elementti <body> sis‰lt‰‰ selaimessa n‰ytett‰v‰n sivun rungon. Yll‰olevalla sivulla on ensimm‰isen tason otsake-elementti h1 (header 1) ja tekstielementti p (paragraph).
+
+Elementit voivat sis‰lt‰‰ attribuutteja ja attribuuttien arvoja. Yll‰ olevassa HTML-dokumentissa elementille meta on m‰‰ritelty erillinen attribuutti charset, joka kertoo dokumentissa k‰ytett‰v‰n merkistˆn: "utf-8". Attribuuttien lis‰ksi elementit voivat sis‰lt‰‰ tekstisolmun. Esimerkiksi yll‰ olevat elementit title, h1 ja p kukin sis‰lt‰v‰t oman tekstisolmun. Tekstisolmulle ei ole erillist‰ elementti‰ tai m‰‰rett‰, vaan se n‰kyy tekstin‰.
+
+Puhe tekstisolmuista antaa viitett‰ jonkinlaisesta puurakenteesta. HTML-dokumentit, aivan kuten XML-dokumentit, ovat rakenteellisia dokumentteja, joiden rakenne on usein helppo ymm‰rt‰‰ puumaisena kaaviona. Yll‰olevan web-sivun voi esitt‰‰ esimerkiksi seuraavanlaisena puuna (attribuutit ja dokumentin tyyppi on j‰tetty merkitsem‰tt‰).
+
+                       html
+                   /          \
+                 /              \
+              head              body
+            /       \         /      \
+         meta       title     h1      p
+                     :        :       :
+                  teksti‰  teksti‰ teksti‰
+Koska HTML-dokumentti on rakenteellinen dokumentti, on elementtien sulkemisj‰rjestyksell‰ v‰li‰. Elementit tulee sulkea samassa j‰rjestyksess‰ kuin ne on avattu. Esimerkiksi, j‰rjestys <body><p>whoa, minttutee!</body></p> on v‰‰r‰, kun taas j‰rjestys <body><p>whoa, minttutee!</p></body> on oikea.
+
+Web-sivujen l‰pik‰ynti
+
+Kun selaimet lataavat HTML-dokumenttia, ne k‰yv‰t sen l‰pi ylh‰‰lt‰ alas, vasemmalta oikealle. Kun selain kohtaa elementin, se luo sille uuden solmun. Seuraavista elementeist‰ luodut solmut menev‰t aiemmin luodun solmun alle kunnes aiemmin kohdattu elementti suljetaan. Aina kun elementti suljetaan, puussa palataan ylˆsp‰in edelliselle tasolle.
+
+Milt‰ seuraavaa HTML-dokumenttia kuvaava puu n‰ytt‰‰?
+
+<!DOCTYPE html>
+<html>
+    <head> 
+    	<title>PSY: Gangnam Style</title>
+    </head>
+    <body>
+
+        <p>"Gangnam Style" is a single by South Korean rapper PSY, that has been viewed 
+        over 500 million times on <a href="http://www.youtube.com">YouTube</a></p>
+
+    </body>
+</html>
+Ent‰ seuraavalla HTML-dokumentilla?
+
+<!DOCTYPE html>
+<html>
+    <head> 
+    	<title>PSY: Gangnam Style</title>
+    <body>
+
+        <p>"Gangnam Style" is a single by South Korean rapper PSY, that has been viewed 
+        over 500 million times on <a href="http://www.youtube.com">YouTube</p>
+
+    </body>
+</html>
+Ascii Artist
+
+Teht‰v‰pohjassa olevassa kansiossa src/main/webapp/ (tai NetBeansissa Web Pages) on dokumentti index.html. Muokkaa dokumenttia siten, ett‰ se sis‰lt‰‰ seuraavann‰kˆisen ASCII-taideteoksen (k‰ytett‰v‰n fontin ei tarvitse olla sama).
+
+
+Koska taideteos on ASCII-taidetta, et luonnollisestikaan saa k‰ytt‰‰ sivussa kuvaa. Vinkki taideteoksen tekemiseen on yll‰ olevassa kuvassa. Kun taideteoksesi toimii Chromessa, palauta teht‰v‰ TMC:lle.
+
+Listaelementit
+
+Sivuille voi lis‰t‰ listoja mm. ol (ordered list) ja ul (unordered list) -elementtien avulla. Elementeill‰ ol tai ul aloitetaan lista, ja listan sis‰lle asetettavat yksitt‰isiin listaelementteihin k‰ytet‰‰n li (list item)-elementti‰. Yksitt‰iset listaelementit voivat taas sis‰lt‰‰ esimerkiksi tekstisolmun tai lis‰‰ html-elementtej‰.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    	<title>Selaimen palkissa ja suosikeissa n‰kyv‰ otsikko</title>
+    </head>
+    <body>
+
+        <h1>Sivulla n‰kyv‰ otsikko</h1>
+
+        <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰, 
+        listaelementti‰ voi k‰ytt‰‰ esimerkiksi ostoslistan tekemiseen.</p>
+
+        <ol>
+            <li>kauraa</li>
+            <li>puuroa</li>
+            <li>omenaa</li>
+        </ol>
+
+    </body>
+</html>
+Yll‰ oleva lista n‰ytt‰‰ seuraavalta ilman muita elementtej‰.
+
+kauraa
+puuroa
+omenaa
+Kuvien lis‰‰minen
+
+Jokaisen web-sivuja rakentavan ihmisen tulee ainakin kerran el‰m‰ss‰‰n lis‰t‰ kuva web-sivuilleen. Sivuille saa lis‰tty‰ kuvia elementill‰ img, jolla on attribuutti src, jonka arvona on kuvan sijainti. Kuvan sijainti riippuu kuvan n‰ytt‰v‰n html-tiedoston sijainnista. Jos kuva on samassa kansiossa html-dokumentin kanssa, tarvitsee img-elementin src-attribuutin arvoksi asettaa vain kuvan nimi.
+
+Esimerkiksi, jos t‰m‰n html-tiedoston sis‰lt‰m‰ss‰ kansiossa on kansio nimelt‰ "img", ja siell‰ kuvatiedosto nimelt‰ "lamppu.png", saa kuvatiedoston sivuille n‰kyville elementill‰ <img src="img/lamppu.png" />. Koska kuvaelementti img ei sis‰ll‰ muita elementtej‰ tai teksti‰, voi sen sulkea suoraan.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    	<title>Selaimen palkissa ja suosikeissa n‰kyv‰ otsikko</title>
+    </head>
+    <body>
+
+        <h1>Sivulla n‰kyv‰ otsikko</h1>
+
+        <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰, 
+        listaelementti‰ voi k‰ytt‰‰ esimerkiksi ostoslistan tekemiseen.</p>
+
+        <ol>
+            <li>kauraa</li>
+            <li>puuroa</li>
+            <li>omenaa</li>
+        </ol>
+
+        <p>Kuvan saa taas n‰ytetty‰ img-elementill‰. V‰l‰htikˆ?</p>
+
+        <img src="img/lamppu.png" />
+        
+    </body>
+</html>
+Kuva ilman muita sivujen elementtej‰ n‰ytt‰‰ seuraavalta.
+
+
+Kuvien oikeuksista
+
+Netiss‰ olevat kuvat ja tiedostot eiv‰t ole vapaasti kaikkien k‰ytett‰viss‰. Jos teet sivuja itsellesi, tutuille tai kavereille, ja k‰yt‰t niiss‰ netist‰ lˆytynytt‰ materiaalia, muista varmistaa ett‰ k‰ytt‰m‰si kuvat ovat laillisesti k‰ytett‰vi‰. Kuvien k‰yttˆoikeuksien varmistaminen ei ole aina helppoa tai edes mahdollista -- kannattaakin k‰ytt‰‰ vain sivustoja, joiden oikeuksista on varmuus.
+
+Esimerkiksi flickr-sivustolla on erillinen creative commons-osio, joka listaa kuvia, joiden k‰yttˆ on sallittua tietyin ehdoin. Lˆyd‰t eri ehdot ja kuvia osoitteesta http://www.flickr.com/creativecommons/. On myˆs sivuja, jotka tarkoituksella ker‰‰v‰t materiaalia tiettyihin aiheisiin liittyen. Esimerkiksi sivusto OpenGameArt tarjoaa vapaasti peleiss‰ k‰ytett‰vi‰ materiaaleja.
+
+Linkit toisille sivuille
+
+Elementin a (anchor) avulla voi luoda linkin sivulta toiselle. Sivu, jolle k‰ytt‰j‰ siirtyy, merkit‰‰n elementin a attribuutin href arvolla. Jos sovelluksessasi on kaksi sivua, index.html ja oma.html, voi sivulta oma.html luoda linkin sivulle index.html komennolla <a href="index.html">index.html</a>. Sivulta voi lis‰t‰ myˆs linkin t‰ysin toiselle sivulle. Alla olevassa esimerkiss‰ on linkki YouTube-sivustolle.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+    	<title>Selaimen palkissa ja suosikeissa n‰kyv‰ otsikko</title>
+    </head>
+    <body>
+
+        <h1>Sivulla n‰kyv‰ otsikko</h1>
+
+        <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰, 
+        listaelementti‰ voi k‰ytt‰‰ esimerkiksi ostoslistan tekemiseen.</p>
+
+        <ol>
+            <li>kauraa</li>
+            <li>puuroa</li>
+            <li>omenaa</li>
+        </ol>
+
+        <p>Kuvan saa taas n‰ytetty‰ img-elementill‰. V‰l‰htikˆ?</p>
+
+        <img src="img/lamppu.png" />
+
+        <p>Linkkej‰ saa lis‰tty‰ a-elementill‰: <a href="http://www.youtube.com/watch?v=9bZkp7q19f0">klikkaamalla 
+        liityt miljoonien joukkoon.</a></p>
+        
+    </body>
+</html>
+Yll‰ olevan sivun viimeinen tekstielementti n‰ytt‰‰ seuraavalta:
+
+Linkkej‰ saa lis‰tty‰ a-elementill‰: klikkaamalla liityt miljoonien joukkoon.
+
+Linkki-elementeille voi lis‰t‰ myˆs attribuutin target, jolla voi ilmaista tietyn ikkunan, johon sivu avataan. Jos attribuutille target antaa arvon "_blank", avataan linkki aina uuteen ikkunaan.
+
+HTML5 ja apuv‰lineet sivun rakenteen m‰‰rittelyyn
+
+HTML5, eli HTML-kuvauskielen uusin (viel‰ kesken oleva) versio, toi mukanaan sivun rakenteen suunnittelua helpottavia elementtej‰. Sivun rakenteen m‰‰rittely‰ helpottavat elementit header, jonka sis‰lle kirjoitetaan sivun yleinen alkuosa kuten h1-elementti ja valikko, nav, joka sis‰lt‰‰ sivun valikon, section-elementti, joka esimerkiksi nivoo yhteen toisiinsa liittyvi‰ osia, article, joka sis‰lt‰‰ yksitt‰isen sivulla olevan dokumentin, ja footer, joka kertoo sivun loppuosan. N‰iden avulla sivun saa jaettua loogisiin osakokonaisuuksiin.
+
+Rakennetta helpottavien elementtien k‰yttˆ ja toiminta liittyy elementtiin, jonka sis‰ll‰ ne ovat. Jos elementti‰ header k‰ytet‰‰n elementin article sis‰ll‰, on header luonnollisesti artikkelin otsaketiedot. Jos taas header-elementti on body-elementin sis‰ll‰, liittyy header-elementin sis‰ltˆ itse sivuun.
+
+Sivut koostuvat yleens‰ header-elementill‰ merkitt‰v‰st‰ yl‰osasta, jossa on otsikko ja mahdollisesti nav-elementill‰ merkitty valikko. N‰it‰ seuraa yksi tai useampi tekstiosa, joka merkit‰‰n article-elementill‰. Sivun lopussa on elementti footer, joka sis‰lt‰‰ esimerkiksi yhteystiedot.
+
+Seuraavassa on esimerkki, jossa h1-otsikko on asetettu header-elementin sis‰‰n. Sivulla on kaksi erillist‰ kirjoitusosaa, jotka on eroteltu article-elementeill‰. N‰it‰ seuraa lopulta footer-elementill‰ merkitty alaosa.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" ></meta>
+    	<title>Sivun otsikko (n‰kyy selaimen palkissa)</title>
+    </head>
+    <body>
+
+        <header>
+            <h1>Sivulla n‰kyv‰ otsikko</h1>
+        </header>
+        
+        <article>
+            <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.</p>
+        </article>
+
+        <article>
+            <ol>
+                <li>kauraa</li>
+                <li>puuroa</li>
+                <li>omenaa</li>
+            </ol>
+        </article>
+
+        <footer>
+            <p>alatunniste, esimerkiksi tekijˆiden nimet.</p>
+        </footer>
+    </body>
+</html>
+Sivulla n‰kyv‰ otsikko
+
+Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.
+
+kauraa
+puuroa
+omenaa
+alatunniste, esimerkiksi tekijˆiden nimet.
+
+Rakenteellinen l‰hestymistapa sivujen sis‰llˆn m‰‰rittelyyn
+
+HTML-kuvauskielt‰ k‰ytet‰‰n sivujen rakenteen m‰‰rittelyyn. Ennen HTML5:tt‰ sivun elementtej‰ eroteltiin toisistaan div (divider)-elementeill‰, joille m‰‰riteltiin attribuuttina sivun osa, jonka div-elementti sis‰lsi. Yll‰ olevan sivun rakenne voidaan luoda myˆs div-elementeill‰.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" ></meta>
+    	<title>Sivun otsikko (n‰kyy selaimen palkissa)</title>
+    </head>
+    <body>
+
+        <div class="header">
+            <h1>Sivulla n‰kyv‰ otsikko</h1>
+        </div>
+        
+        <div class="article">
+            <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.</p>
+        </div>
+
+        <div class="article">
+            <ol>
+                <li>kauraa</li>
+                <li>puuroa</li>
+                <li>omenaa</li>
+            </ol>
+        </div>
+
+        <div class="footer">
+            <p>alatunniste, esimerkiksi tekijˆiden nimet.</p>
+        </div>
+    </body>
+</html>
+Huomannet ett‰ ero on k‰yt‰nnˆss‰ hyvin pieni. Oleellisinta on loogisten osakokonaisuuksien erottelu toisistaan. HTML5 tarjoaa siihen tyˆv‰lineet, joita kannattaa k‰ytt‰‰.
+
+Kampuskuoro
+
+Luo teht‰v‰pohjassa olevaan kansioon src/main/webapp/ uusi sivu index.html. Muokkaa sivua siten, ett‰ se n‰ytt‰‰ seuraavalta selaimessa:
+
+
+Otsikon tulee olla header-elementin sis‰ll‰, kuvaus ja laululista omien article-elementtien sis‰ll‰. Ei haittaa jos tekstin leveys on eri kuin yll‰ olevassa kuvassa! Kun olet valmis, ja sivusi n‰ytt‰‰ oikealta Chromessa, palauta teht‰v‰ TMC:lle.
+
+Lomakkeet
+
+Lomakkeita k‰ytet‰‰n tiedon syˆtt‰miseen web-sivuille. Tietoa voi l‰hett‰‰ joko erilliselle palvelimelle, tai k‰sitell‰ osana sivustoa JavaScript-kielen avulla. Lomakkeet aloitetaan HTML-elementill‰ <form>. Lomake-elementin sis‰lle voi asettaa useita erilaisia kentti‰. Palvelimelle dataa l‰hetett‰ess‰ jokaisella kent‰ll‰ tulee olla attribuutti name, jota k‰ytet‰‰n palvelimella tiedon identifiointiin.
+
+Erilaisia lomakekentti‰ on useita:
+
+tekstikentt‰: 
+
+	  <input type="text" />
+      
+salasanakentt‰: 
+
+	  <input type="password" />
+      
+tekstialue: 
+
+Toisin kuin monet muut lomakkeen kentt‰elementit, tekstialue tulee sulkea erillisell‰ elementill‰.
+	  <textarea name="tekstialue"></textarea>
+      
+valintaruutu: 
+ Porkkanaa
+ Naurista
+ Kaalia
+Selaimesta riippuen valintaruudun tiedot l‰hetet‰‰n lomakkeen mukana vain kent‰n ollessa valittuna.
+	  <input type="checkbox" name="porkkanaa" /> Porkkanaa <br/>
+	  <input type="checkbox" name="naurista" /> Naurista <br/>
+	  <input type="checkbox" name="kaalia" /> Kaalia <br/>
+	
+valintanappi:
+ Porkkanaa
+ Naurista
+ Kaalia
+Valintanappia k‰ytett‰ess‰ vain yksi saman name-attribuutin omistava radio-tyyppinen input-elementti voi olla valittuna. Lomaketta l‰hetett‰ess‰ valitun elementin attribuutin value arvo l‰hetet‰‰n name attribuutin arvona.
+	  <input type="radio" name="valinta" value="porkkanaa"/> Porkkanaa<br/>
+	  <input type="radio" name="valinta" value="naurista"/> Naurista<br/>
+	  <input type="radio" name="valinta" value="kaalia"/> Kaalia<br/>
+      
+painettava nappi:
+
+Painettavaa nappia painettaessa mit‰‰n ei tapahdu, ellei siihen ole erikseen lis‰tty toiminnallisuutta esimerkiksi javascript-kielell‰.
+	  <input type="button" value="Painettava nappi" />
+      
+l‰hetysnappi:
+
+L‰hetysnappia painettaessa lomakkeen tiedot l‰hetet‰‰n lomake-elementiss‰ m‰‰riteltyyn osoitteeseen (lomake-elementin action -attribuutin arvo) valitulla l‰hestytavalla (lomake-elementin method-attribuutin arvo).
+	  <input type="submit" value="L‰het‰" />
+      
+Lomakkeen l‰hett‰minen
+
+Kun lomake l‰hetet‰‰n selain ohjaa k‰ytt‰j‰n kohdeosoitteeseen siten, ett‰ l‰hetett‰v‰n lomakkeen tiedot ovat mukana selaimen tekem‰ss‰ pyynnˆss‰. Jos lomakkeen l‰hetystapa on GET, on lomakkeen tiedot osana osoitetta. L‰hetystavassa POST arvot tulevat osana pyynnˆn runkoa.
+
+Alla on lomake jolla voi visualisoida tietojen l‰hett‰mist‰ palvelimelle. Lomakkeet l‰hetet‰‰n osoitteeseen http://t-avihavai.users.cs.helsinki.fi/lets/See), jossa on pyynnˆss‰ saadut tiedot tulostava web-palvelu.
+
+K‰ytt‰j‰tunnus:  Salasana:   
+<form method="POST" action="http://t-avihavai.users.cs.helsinki.fi/lets/See">
+    <label>K‰ytt‰j‰tunnus: <input type="text" name="tunnus" /></label>
+    <label>Salasana: <input type="password" name="salasana" /></label>
+    <input type="submit" />
+</form>
+Lis‰‰ informaatiota
+
+Mik‰‰n yksitt‰inen HTML-opas ei itsess‰‰n kata kaikkea HTML‰‰n liittyv‰‰. T‰ss‰kin dokumentissa tehtiin pieni pintaraapaisu HTMLn ominaisuuksiin. Erityisesti selainsovelluksia rakennettaessa uusinta informaatiota jaetaan mm. blogeissa ja muissa webiss‰ julkaistavissa artikkeleissa. Web on t‰ynn‰ timanttisia sivustoja kuten http://www.html5rocks.com/, http://html5-demos.appspot.com/, ...
+
+Kuten yll‰ olevista linkeist‰ huomaat, "puhekieless‰" HTML5 sis‰lt‰‰ HTML-syntaksin lis‰ksi CSSn ja JavaScriptin. Avain onneen on pienest‰ liikkeelle l‰hteminen: toteutta joku webiss‰ oleva hieno sivu itse sivun l‰hdekoodia seuraten. Muokkaile l‰hdekoodia, ja ota selv‰‰ mit‰ eri komennot tekev‰t. Kun joku komento on ep‰selv‰, google auttaa.
+
+CSS
+
+CSS (cascading style sheets)-tyylitiedostot ovat tiedostoja, joissa m‰‰ritell‰‰n miten web-sivun elementit tulee n‰ytt‰‰ k‰ytt‰j‰lle. HTML-kuvauskielell‰ m‰‰ritell‰‰n web-sivun rakenne ja sis‰ltˆ, tyylitiedostoilla sen ulkoasu.
+
+Tyylitiedostoilla voi tehd‰ ison eron siihen, milt‰ sivu n‰ytt‰‰. L‰hdet‰‰n kuitenkin pienest‰ liikkeelle. Tyylitiedosto on HTML-dokumentista erillinen tiedosto, joka sis‰lt‰‰ erilaisia tyylim‰‰rittelyj‰. Tyylitiedostoja voi olla useita. Jotta HTML-dokumentti saa tyylitiedoston k‰yttˆˆns‰, tulee tyylitiedoston sijainti m‰‰ritell‰ head-elementin sis‰lle tyylitiedoston lataavaan elementtiin link.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" ></meta>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    	<title>Sivun otsikko (n‰kyy selaimen palkissa)</title>
+    </head>
+    <body>
+
+        <!-- sivun sis‰ltˆ: n‰in sivuille saa kommentin -->
+
+    </body>
+</html>
+Elementille link kerrotaan viitattavan tiedoston tyyli (rel="stylesheet"), tyyppi (type="text/css") ja sijainti (href="sijainti.css"). Sijainnin tulee kertoa tyylitiedoston nimi. Tyylitiedostojen p‰‰tteen‰ k‰ytet‰‰n merkkijonoa .css. Esimerkiksi jos tyylitiedosto t‰m‰n tiedoston sis‰lt‰m‰n kansion sis‰ll‰ olevassa kansiossa "stylesheets" ja tyylitiedoston nimi on style.css, asetetaan elementin link attribuutin href arvoksi "stylesheets/style.css".
+
+Tyylitiedosto
+
+Tyylitiedosto on erillinen tiedosto HTML-dokumentista. Luodaan esimerkiksi tiedosto style.css, jonka sis‰ltˆ on seuraavanlainen:
+
+body {
+    background-color: rgb(200, 200, 200);
+    margin: 0;
+    padding: 0;
+}
+Yll‰ olevassa tyylitiedostossa sanotaan, ett‰ elementin body (eli HTML-dokumentin rungon) taustav‰ri on rgb-arvolla kerrottuna 200, 200, 200, eli vaaleahko. V‰riarvo rgb tulee sanoista red, green, ja blue, ja jokaisella arvolla kerrotaan v‰rin m‰‰r‰n. Kunkin v‰rin m‰‰r‰ ilmaistaan numerolla nollan ja 255 v‰lill‰. Jos jokaisen v‰rin arvo on 0, on v‰ri musta, ja jos jokaisen v‰rin arvo on 255, on v‰ri valkoinen.
+
+Kukin tyylim‰‰rittely alkaa tyylitelt‰v‰n elementin kertovalla valitsimella ja avaavalla aaltosululla {, joita seuraa listaus k‰ytett‰vist‰ tyyleist‰. Kun k‰ytett‰v‰t tyylit on m‰‰ritelty, tyylim‰‰rittely lopetetaan sulkevalla aaltosululla }. Kullakin tyylill‰ on nimi ja arvo, jotka erotetaan toisistaan kaksoispisteell‰ :. Yksitt‰isen tyylin (nimi ja arvo) j‰lkeen lis‰t‰‰n puolipiste ;. Yhteen tyylim‰‰rittelyyn voi sis‰llytt‰‰ useita tyylej‰, ja yksitt‰inen tyyli voi riippuen tyylist‰ saada useita arvoja.
+
+valitsin {
+    tyylin-nimi: tyylin-arvo;
+    toisen-tyylin-nimi: arvo toinen-arvo;
+}
+Tyylim‰‰rittely voi myˆs sis‰lt‰‰ useita tyylitelt‰vi‰ elementtej‰, t‰llˆin valitsimet erotellaan toisistaan pilkulla.
+
+valitsin, valitsin2 {
+    tyylin-nimi: tyylin-arvo;
+    toisen-tyylin-nimi: arvo toinen-arvo;
+}
+Valitsimia voi k‰ytt‰‰ myˆs lasten valintaa, esimerkiksi seuraavassa valitaan ensimm‰isen valitsimen joukosta toisen valitsimen tyyppinen lapsi.
+
+valitsin > valitsin2 {
+    tyylin-nimi: tyylin-arvo;
+    toisen-tyylin-nimi: arvo toinen-arvo;
+}
+Valitsimet
+
+Jokaiselle sivun elementille voidaan m‰‰ritell‰ oma tyyli. Jos halutaan ett‰ sama tyyli esiintyy kaikissa elementeiss‰, voidaan valitsimena k‰ytt‰‰ elementin nime‰. Esimerkiksi seuraava tyylitiedosto muuttaa kaikkien p-elementtien tekstin v‰rin punaiseksi.
+
+p {
+    color: rgb(255, 0, 0);
+}
+Luokka-attribuutti
+
+Silloin t‰llˆin tyyli halutaan asettaa vain tietylle elementille tai elementtijoukolle. Elementeille voidaan m‰‰ritell‰ luokka-attribuutti class, jonka arvoksi asetetaan joku tietty arvo, esimerkiksi "blue". Luokka-attribuuttien tyylit voi asettaa erillisell‰ class-attribuutteja valitsevalla valitsimella, pisteell‰. Esimerkiksi kaikki elementit, joilla on luokka-attribuutin arvo "blue" voi valita seuraavasti (kaikille asetetaan alla tekstin v‰riksi sininen):
+
+.blue {
+    color: rgb(0, 0, 255);
+}
+Itse sivulla olevat elementit n‰ytt‰v‰t seuraavalta luokka-attribuutin kanssa. Osalla elementeist‰ on luokka-attribuutti "blue", ja osalla ei.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" ></meta>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    	<title>Sivun otsikko (n‰kyy selaimen palkissa)</title>
+    </head>
+    <body>
+
+        <header>
+            <h1>Sivulla n‰kyv‰ otsikko</h1>
+        </header>
+        
+
+        <article>
+            <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.</p>
+            <p class="blue">Kuten edellinen elementti, mutta t‰ll‰ on luokka-attribuutti, jonka arvo on "blue".
+            Tyylim‰‰rittely .blue asettaa tekstin v‰rin siniseksi.</p>
+        </article>
+        
+    </body>
+</html>
+Sivulla n‰kyv‰ otsikko
+
+Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.
+
+Kuten edellinen elementti, mutta t‰ll‰ on luokka-attribuutti, jonka arvo on "blue".
+
+Tunnus-attribuutti
+
+Luokka-attribuuttia k‰ytet‰‰n joukolle tyylej‰. Yksitt‰isi‰ elementtej‰ tyylitelt‰ess‰ tapana on k‰ytt‰‰ erillist‰ tunnus-attribuuttia, joka m‰‰ritell‰‰n nimell‰ id. Kuten luokka-attribuutille, myˆs tunnus-attribuutille asetetaan arvo. Tunnus-attribuuttiin p‰‰see k‰siksi tyylitiedostossa risuaita (#) -etuliitteell‰. Luodaan sivu, jossa on useampia artikkeleita, joista yht‰ halutaan korostaa.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" ></meta>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    	<title>Sivun otsikko (n‰kyy selaimen palkissa)</title>
+    </head>
+    <body>
+        <header>
+            <h1>Sivulla n‰kyv‰ otsikko</h1>
+        </header>
+        
+
+        <article id="highlighted-article">
+            <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.</p>
+        </article>
+
+        <article>
+            <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.</p>
+        </article>
+
+        <article>
+            <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.</p>
+        </article>
+                
+    </body>
+</html>
+Luodaan sivu siten, ett‰ artikkeleilla on pyˆre‰t kulmat ja vaaleahko taustav‰ri. Korostettavalla artikkelilla on oma tyylins‰, jossa sille asetetaan hieman vaaleampi taustav‰ri.
+
+article {
+    background-color: rgb(200, 200, 200);
+    margin: 1em;
+    padding: 1em;
+    width: 40%;
+
+    /* pyˆre‰t kulmat -- useampi m‰‰rittely sill‰ tyylispesifikaatio viel‰ kesken */
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+#highlighted-article {
+    width: 42%;
+    background-color: rgb(240, 240, 240);
+
+    /* fiilistell‰‰n css3-tyylien kanssa */
+    -webkit-transform: rotate(-2deg); /* chrome, safari */  
+    -moz-transform: rotate(-2deg); /* firefox */  
+    -o-transform: rotate(-2deg); /* opera */  
+    transform: rotate(-2deg);  
+}
+Sivulla n‰kyv‰ otsikko
+
+Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.
+
+Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.
+
+Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰.
+
+Tyylien vaikutus elementteihin
+
+Edell‰ olevassa esimerkiss‰ tyyli #highlighted-article ei sis‰lt‰nyt reunojen pyˆristyst‰, mutta silti korostetun artikkelin reunat pyˆristettiin silti. Miksi?
+
+Elementti k‰ytt‰‰ kaikkia sille m‰‰riteltyj‰ tyylej‰. Esimerkiksi tyyli #highlighted-article on osana article-elementti‰, jolla taas on siihen liittyv‰ tyyli. Mielenkiintoinen kohta liittyy artikkelin leveyteen (tyylim‰‰rittely width): tyyliss‰ #highlighted-article oleva m‰‰rittely width korvaa tyyliss‰ article m‰‰ritellyn leveyden. Jos leveytt‰ ei olisi korvattu, olisi myˆs leveys peritty.
+
+Koska HTML-dokumentti on puu, voi tyylien periytymist‰ ajatella myˆs puumaisena periytymisen‰. Jos elementille body m‰‰ritell‰‰n tietynlainen tyyli, on kaikilla sen lapsisolmuilla body-elementiss‰ m‰‰ritelty tyyli, ellei lapsisolmu korvaa tyyli‰.
+
+Kaikki tyylit eiv‰t kuitenkaan periydy. Tutustu tarkemmin tyylim‰‰rittelyihin ja standardiin osoitteessa http://www.w3.org/TR/CSS/#properties.
+
+Css Askeleet
+
+Luo teht‰v‰pohjan kansioon src/main/webapp/ tyylitiedosto style.css, ja viittaa siihen tiedostosta index.html. Muokkaa tyylitiedostoa style.css siten, ett‰ sivu index.html n‰ytt‰‰ seuraavanlaiselta.
+
+
+T‰ss‰ muutama hyˆdyllinen v‰ri:
+
+rgb(242, 242, 242)
+rgb(155, 155, 155)
+rgb(10, 10, 10)
+rgb(252,179,21)
+Sivu k‰ytt‰‰ seuraavaa m‰‰rittely‰ fontin valintaan..
+
+    font-family: 'Trebuchet MS', Trebuchet, Arial, sans-serif;
+Kun olet valmis, ja sivusi n‰ytt‰‰ oikealta Chromessa, palauta teht‰v‰ TMC:lle.
+
+Case: Listojen tyylit
+
+Tyylitiedostoilla saa muokattua oikeastaan kaikkea sivulla olevaa. Listalle voi asettaa taustav‰rin, ja siit‰ voi poistaa numeroinnin tai pallot. Luodaan tyyliluokka menu, jossa listan taustav‰ri on vaalean harmaa, ja listan palloja ei n‰ytet‰.
+
+.menu {
+    /* listan tausta on harmaa */
+    background-color: rgb(230, 230, 230);
+
+    /* ei n‰ytet‰ palloja */
+    list-style-type: none;
+    
+    /* lis‰t‰‰n reunoille hieman tilaa (1em = 1 standardimerkin leveys) */
+    padding: 1em;
+}
+  <ul class="menu">
+    <li>Eka pallukka</li>
+    <li>Toka pallukka</li>
+    <li>Kolmas pallukka</li>
+  </ul>
+Nyt lista n‰ytt‰‰ seuraavalta:
+
+Eka pallukka
+Toka pallukka
+Kolmas pallukka
+Muutetaan listan elementtej‰ siten, ett‰ ne asetellaan vierekk‰in. Luodaan tyyliluokka menuelement, joka asettaa listaelementit vierekk‰in, ja lis‰‰ niille hieman tilaa sivuille.
+
+.menuelement {
+    /* 1 standardimerkin leveyden verran tilaa jokaiselle puolelle */
+    padding: 1em;
+    /* n‰ytet‰‰n menuelementit vierekk‰in */
+    display: inline; 
+}
+Lis‰t‰‰n listan elementeille tyyliluokka listaelementti.
+
+  <ul class="menu">
+    <li class="menuelement">Eka pallukka</li>
+    <li class="menuelement">Toka pallukka</li>
+    <li class="menuelement">Kolmas pallukka</li>
+  </ul>
+Nyt lista n‰ytt‰‰ seuraavalta:
+
+Eka pallukka Toka pallukka Kolmas pallukka
+Valikkoihin halutaan usein jonkinlaista dynaamista toiminnallisuutta. Lis‰t‰‰n toiminnallisuus, jossa vaihtoehdon taustav‰ri muuttuu kun sen p‰‰lle vied‰‰n hiiri. Valitsimen lis‰m‰‰reell‰ :hover voidaan m‰‰ritell‰ tyyli, joka n‰kyy vain kun hiiri on tyylitellyn alueen p‰‰ll‰. Lis‰t‰‰n toinen menuelement-tyyliluokka, ja sille lis‰m‰‰re :hover.
+
+.menuelement {
+    /* 1 standardimerkin leveyden verran tilaa jokaiselle puolelle */
+    padding: 1em;
+    /* n‰ytet‰‰n menuelementit vierekk‰in */
+    display: inline; 
+}
+
+.menuelement:hover {
+    /* vaaleampi taustav‰ri kun hiiri on tyylin p‰‰ll‰ */
+    background-color: rgb(245, 245, 245);
+}
+T‰ss‰ meid‰n ei tarvitse muokata HTML-dokumenttia, sill‰ tyyliluokka menuelement on jo m‰‰ritelty HTML-dokumenttiin.
+
+Eka pallukka Toka pallukka Kolmas pallukka
+Viel‰ noin 5 vuotta sitten pyˆre‰t kulmat tehtiin erillisill‰ kuvilla. Ei en‰‰! Pyˆre‰t kulmat eiv‰t ole viel‰ ihan helpon komennon takana, vaan niihin tarvitaan kolme erillist‰ komentoa. Erillisi‰ komentoja tarvitaan selainyhteensopivuuden varmistamiseksi: pyˆre‰t kulmat m‰‰rittelev‰ standardi ei ole viel‰ lopullinen...). Pyˆre‰t kulmat saa lis‰tty‰ tyyliluokkaan menu seuraavasti:
+
+.menu {
+    /* t‰m‰ on muuten kommentti, eli kone ei tee sill‰ mit‰‰n */
+    /* listan tausta on harmaa */
+    background-color: rgb(230, 230, 230);
+
+    /* ei n‰ytet‰ palloja */
+    list-style-type: none;
+
+    /* lis‰t‰‰n reunoille hieman tilaa (1em = 1 standardimerkin leveys) */
+    padding: 1em;
+
+    /* pyˆre‰t kulmat */
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+Lista n‰ytt‰‰ nyt seuraavalta:
+
+Eka pallukka Toka pallukka Kolmas pallukka
+Tyylivalitsimet ja menu
+
+Yll‰ oleva l‰hestymistapa, vaikkakin hieno, on hieman kˆmpelˆ. Jouduimme lis‰‰m‰‰n jokaiselle tyylitelt‰v‰lle elementille oman luokkam‰‰rittelyn. Aiemmin n‰imme, ett‰ tyylej‰ voi m‰‰ritell‰ listana seuraavasti:
+
+valitsin, valitsin2 {
+    tyylin-nimi: tyylin-arvo;
+    toisen-tyylin-nimi: arvo toinen-arvo;
+}
+Tutustutaan seuraavaksi toiseen tapaan. Tavoitteenamme on tyylitell‰ alla olevan sivun header-osio uudestaan. Huomaa jo nyt, ett‰ sivun header-osioon ei ole m‰‰ritelty luokkia tai tunnuksia!
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" ></meta>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    	<title>Sivun otsikko (n‰kyy selaimen palkissa)</title>
+    </head>
+    <body>
+        <header>
+            <h1>Sivulla n‰kyv‰ otsikko</h1>
+
+            <nav>
+                <ul>
+                    <li><a href="#">linkki</a></li>
+                    <li><a href="#">linkki</a></li>
+                    <li><a href="#">linkki</a></li>
+                    <li><a href="#">linkki</a></li>
+                </ul>
+            </nav>
+
+        </header>
+
+        <!-- muu sis‰ltˆ -->
+                
+    </body>
+</html>
+Sivulla n‰kyv‰ otsikko
+
+linkki
+linkki
+linkki
+linkki
+Toinen tapa valita tyylitelt‰vi‰ elementtej‰ liittyy niiden j‰rjestykseen osana dokumenttia. Voimme tyylitell‰ header-elementin sis‰ll‰ olevan h1-elementin seuraavasti. Huomaa ett‰ t‰m‰ tyylittely ei muuta kaikkia h1-elementtej‰, vain vaan ne, jotka ovat header-elementin sis‰ll‰.
+
+header h1 {
+    color: rgb(80, 80, 80);
+}
+Sivulla n‰kyv‰ otsikko
+
+linkki
+linkki
+linkki
+linkki
+Jatketaan esimerkki‰ muokkaamalla header-elementiss‰ olevan nav-elementin sis‰lt‰m‰‰ listaa. Listan taustav‰riksi asetetaan l‰hes musta, ja sill‰ on pyˆristetyt kulmat.
+
+header h1 {
+    color: rgb(40, 40, 40);
+}
+
+header nav ul {
+    /* fontin koon ym m‰‰rittely‰.. */
+    font-size: 1.2em;
+    height: 40px;
+    line-height: 30px;
+    margin: 0 auto 2em auto;
+
+    /* taustav‰riksi h1-elementin taustav‰ri */
+    background-color: rgb(40, 40, 40);
+
+    /* ei n‰ytet‰ palloja */
+    list-style-type: none;
+
+
+    /* pyˆre‰t kulmat */
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+Sivulla n‰kyv‰ otsikko
+
+linkki
+linkki
+linkki
+linkki
+Ei mitenk‰‰n kovin komea, muutamat selaimet n‰ytt‰v‰t myˆs listaelementit listan ulkopuolella. Lis‰t‰‰n listaelementeille m‰‰rittely, jossa ne asetetaan vierekk‰in.
+
+header h1 {
+    color: rgb(40, 40, 40);
+}
+
+header nav ul {
+    /* fontin koon ym m‰‰rittely‰.. */
+    font-size: 1.2em;
+    height: 40px;
+    line-height: 30px;
+    margin: 0 auto 2em auto;
+
+    /* taustav‰riksi h1-elementin taustav‰ri */
+    background-color: rgb(40, 40, 40);
+
+    /* ei n‰ytet‰ palloja */
+    list-style-type: none;
+
+
+    /* pyˆre‰t kulmat */
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+header nav ul li {
+    float: left; 
+    display: inline; 
+}
+Sivulla n‰kyv‰ otsikko
+
+linkkilinkkilinkkilinkki
+Ei viel‰k‰‰n komea, mutta selvi‰mme t‰st‰ kyll‰. Muutetaan linkkielementtien v‰ri valkoiseksi, suurennetaan niiden fonttia, ja asetetaan niille hieman tilaa ymp‰rille.
+
+header h1 {
+    color: rgb(40, 40, 40);
+}
+
+header nav ul {
+    /* fontin koon ym m‰‰rittely‰.. */
+    font-size: 1.2em;
+    height: 40px;
+    line-height: 30px;
+    margin: 0 auto 2em auto;
+
+    /* taustav‰riksi h1-elementin taustav‰ri */
+    background-color: rgb(40, 40, 40);
+
+    /* ei n‰ytet‰ palloja */
+    list-style-type: none;
+
+
+    /* pyˆre‰t kulmat */
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+header nav ul li {
+    float: left; 
+    display: inline; 
+}
+
+
+header nav ul li a {
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 5px 1.5em;
+    text-decoration: none;
+}
+Nyt sivumme yl‰osa n‰ytt‰‰ seuraavalta.
+
+Sivulla n‰kyv‰ otsikko
+
+linkkilinkkilinkkilinkki
+Lis‰t‰‰n viel‰ linkkielementeille toiminnallisuus, jossa niiden taustav‰ri muuttuu kun hiiri vied‰‰n elementin p‰‰lle. Asetetaan taustav‰ri t‰llˆin valkoiseksi, ja linkin fontti aiemmin k‰ytetyksi tummaksi v‰riksi.
+
+header h1 {
+    color: rgb(40, 40, 40);
+}
+
+header nav ul {
+    /* fontin koon ym m‰‰rittely‰.. */
+    font-size: 1.2em;
+    height: 40px;
+    line-height: 30px;
+    margin: 0 auto 2em auto;
+
+    /* taustav‰riksi h1-elementin taustav‰ri */
+    background-color: rgb(40, 40, 40);
+
+    /* ei n‰ytet‰ palloja */
+    list-style-type: none;
+
+    /* pyˆre‰t kulmat */
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+
+header nav ul li {
+    float: left; 
+    display: inline; 
+}
+
+header nav ul li a {
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 5px 1.5em;
+    text-decoration: none;
+}
+
+header nav ul li a:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(40, 40, 40);
+}
+Sivulla n‰kyv‰ otsikko
+
+linkkilinkkilinkkilinkki
+Done! Tyylimaailman sopivuudesta jokainen saa toki p‰‰tt‰‰ itse :).
+
+Suosikit
+
+Teht‰v‰pohjassa on lista suosikkeja. Teht‰v‰n‰si on lis‰t‰ sivulle tyyli, joka tekee sivusta seuraavann‰kˆisen. Huomaa, ett‰ sivun artikkeli-elementtien tulee k‰‰nty‰ hieman kun hiiri vied‰‰n niiden p‰‰lle.
+
+
+Edellisess‰ teht‰v‰ss‰ m‰‰rittelemist‰si tyyleist‰ on hyˆty‰ t‰ss‰ teht‰v‰ss‰. Kun olet valmis, ja sivusi n‰ytt‰‰ oikealta Chromessa, palauta teht‰v‰ TMC:lle.
+
+Lis‰‰ informaatiota
+
+Web on pullollaan myˆs CSS‰‰n liittyvi‰ sivuja; http://www.css3.com/, http://www.smashingmagazine.com/learning-css3-useful-reference-guide/, ...
+
+Viimeisin versio lˆytyy osoitteesta http://www.w3.org/Style/CSS/current-work -- CSS3 on jatkuvasti p‰ivittyv‰ standardi.
+
+JavaScript
+
+Siin‰ miss‰ HTML on kuvauskieli web-sivujen rakenteen ja sis‰llˆn luomiseen, ja CSS on kieli web-sivustojen tyylin m‰‰rittelyyn, JavaScript on kieli dynaamisen toiminnan lis‰‰miselle. Suomen kielioppia ajatellen HTML:‰‰ voi ajatella substantiiveina, CSS:‰‰ adjektiiveina, ja JavaScripti‰ verbein‰. K‰yt‰nnˆss‰ JavaScript on ohjelmakoodia, jota suoritetaan tarvittaessa komento kerrallaan -- ylh‰‰lt‰ alas, vasemmalta oikealle.
+
+Ensimm‰inen komento jonka opimme on alert("tulostettava merkkijono"). Funktio alert("jotain") on JavaScriptin valmis funktio, ja se avaa uuden pop-up -ikkunan jossa n‰kyy funktion alert parametrina saama arvo. Funktiolle alert voi antaa parametrina oikeastaan mink‰laisia arvoja tahansa. Voit testata alert-funktion toimintaa alla olevassa laatikossa. Painamalla nappia "Suorita koodi!", selaimesi suorittaa laatikossa olevan koodin.
+
+
+
+
+
+Ohjelmakoodia suoritettaessa selain k‰y l‰pi laatikossa olevat komennot yksi kerrallaan ylh‰‰lt‰ alas, vasemmalta oikealle, ja toimii niiden mukaan. JavaScript-koodi suoritetaan siis omalla koneellasi omassa selaimessasi. Kukin komento loppuu puolipisteeseen (;), ja komentoja voi olla useampia. Mit‰ k‰y jos muutat alert-komennossa olevaa teksti‰, tai lis‰‰t useamman alert-komennon?
+
+Vaikkakin k‰yt‰mme komentoa alert hyvin intensiivisesti, se ei ole osa JavaScript-spesifikaatiota.
+
+ 
+
+ 
+
+Funktiot
+
+Jos yll‰oleva koodi asetetaan l‰hdekooditiedostoon, se suoritetaan heti kun selain lataa tiedoston. Haluamme kuitenkin usein siirt‰‰ koodin suoritusta tulevaisuuteen, johonkin tiettyyn tapahtumaan. T‰t‰ varten on olemassa funktiot. Funktioilla m‰‰ritell‰‰n ohjelmakoodia, joka suoritetaan myˆhemmin.
+
+Funktio m‰‰ritell‰‰n merkkijonolla function funktionNimi() { suoritettava koodi}. Ensin avainsana function, joka kertoo ett‰ seuraavaksi on tulossa funktion m‰‰rittely. T‰t‰ seuraa funktion nimi, ja sulut, joita seuraa aukeava aaltosulku {. Aaltosulun j‰lkeen tulee funktiota kutsuttaessa suoritettava ohjelmakoodi, jonka j‰lkeen tulee sulkeva aaltosulku }.
+
+Alla on m‰‰ritelty funktio, joka kysyy k‰ytt‰j‰lt‰ nime‰, tallentaa nimen muuttujaan nimi, ja lopulta k‰ytt‰‰ funktiota alert nimen tulostamiseen.
+
+
+
+
+
+Kun painat nappia "Suorita koodi!", huomaat ettei mit‰‰n tapahdu. T‰m‰ johtuu siit‰, ett‰ funktiota ei kutsuta mist‰‰n, eli funktion suorittamista ei pyydet‰. Lis‰t‰‰n funktiokutsu. Funktion kutsuminen onnistuu sanomalla funktion nimi ja sulut, sek‰ puolipiste. Esimerkiksi funktionNimi();. Alla olevassa koodissa on sek‰ funktion kysyNimiJaTervehdi m‰‰rittely, ett‰ funktion kysyNimiJaTervehdi kutsu.
+
+
+
+
+
+JavaScriptin lis‰‰minen omille sivuille
+
+Aivan kuten CSS-tyylim‰‰rittelyt, JavaScript-l‰hdekoodit tulee erottaa HTML-dokumentista.
+
+JavaScript-tiedoston p‰‰te on yleens‰ .js ja siihen viitataan elementill‰ script. Elementill‰ script on attribuutti src, jolla kerrotaan l‰hdekooditiedoston sijainti. Jos l‰hdekoodi on kansiossa javascript olevassa tiedostossa code.js, k‰ytet‰‰n script-elementti‰ seuraavasti: <script src="javascript/code.js"></script>. Huomaa ett‰ script-elementti suljetaan poikkeuksellisesti erikseen vaikka se ei sis‰ll‰k‰‰n teksti‰.
+
+Hyv‰ k‰yt‰ntˆ JavaScript-l‰hdekoodien lataamiseen on ladata ne juuri ennen niiden tarvitsemista. Jos l‰hdekoodia ei tarvita kuin vasta sivun ollessa kokonaan latautunut, kannattaa l‰hdekoodien hakeminen asettaa sivun loppuun. T‰m‰ johtuu mm. siit‰, ett‰ selaimen kohdatessa JavaScript-tiedoston, se l‰htee hakemaan tiedostoa ja asettaa kaikki muut toiminnot odottamaan. Kun l‰hdekooditiedosto ladataan vasta sivun lopussa, k‰ytt‰j‰ n‰kee sivun sis‰ltˆ‰ jo ennen l‰hdekoodin latautumista: t‰m‰ luo tunteen nopeammin reagoivista sivuista.
+
+Luodaan kansioon javascript l‰hdekooditiedosto code.js. Tiedostossa code.js on funktio sayHello, joka n‰ytt‰‰ k‰ytt‰j‰lle viestin "BAD = browser application development".
+
+function sayHello() {
+    alert("BAD = browser application development");
+}
+HTML-dokumentti, jossa l‰hdekooditiedosto ladataan, n‰ytt‰‰ seuraavalta:
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" ></meta>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    	<title>Sivun otsikko (n‰kyy selaimen palkissa)</title>
+    </head>
+    <body>
+        <header>
+            <h1>Sivulla n‰kyv‰ otsikko</h1>
+        </header>
+        
+        <article>
+            <p>Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰. Alla on nappi, 
+            jota painamalla kutsutaan funktiota "sayHello".</p>
+            <input type="button" value="Tervehdi" onclick="sayHello();" />
+        </article>
+
+        <!-- ladataan JavaScript-koodit tiedoston lopussa! -->
+        <script src="javascript/code.js"></script>
+                
+    </body>
+</html>
+Itse sivu n‰ytt‰‰ seuraavalta:
+
+Sivulla n‰kyv‰ otsikko
+
+Sivuilla n‰ytett‰v‰ normaali teksti on p-elementin sis‰ll‰. Alla on nappi, jota painamalla kutsutaan funktiota "sayHello".
+
+
+Mit‰ el‰in sanoo?
+
+Teht‰v‰pohjassa tulevalla sivulla on kolme erillist‰ el‰int‰. Luo teht‰v‰pohjaan erillinen javascript-tiedosto, ja lataa se sivun k‰yttˆˆn. Lis‰‰ toiminnallisuus, jonka avulla lehm‰n nappia painettaessa k‰ytt‰j‰lle tulostetaan viesti "muu muu", porsaan nappia painettaessa "nˆf nˆf", ja kanan nappia painettaessa "kot kot".
+
+Varmista sivusi toiminnallisuus. Kun olet valmis, palauta teht‰v‰ TMC:lle.
+
+JavaScriptin alkeita
+
+T‰ss‰ osiossa k‰yd‰‰n pikaisesti l‰pi JavaScriptin alkeita.
+
+Muuttuja
+
+Jotta sama tieto olisi k‰ytˆss‰ useammassa paikassa, tarvitsemme jonkun tavan tallentaa tietoa. Javascriptiss‰, kuten l‰hes kaikissa muissakin ohjelmointikieliess‰, t‰h‰n k‰ytet‰‰n muuttujia. Muuttujat esitell‰‰n sanomalla var muuttujanNimi, eli ensin sana var, jota seuraa nimi muuttujalle. T‰m‰n j‰lkeen seuraa yht‰suuruusmerkki, jota seuraa muuttujaan asetettava arvo, esimerkiksi var vitonen = 5;. Edellinen komento luo muuttujan vitonen, ja asettaa siihen arvon 5.
+
+Alla olevassa koodissa asetamme ensin muuttujaan kolme arvon 3, ja kutsumme aiemmin n‰kem‰‰mme alert-komentoa siten, ett‰ alert-komento saa parametrina muuttujassa kolme olevan arvon.
+
+
+
+
+
+Olemassaoleviin muuttujiin voi sijoittaa uuden arvon. Seuraava koodi n‰ytt‰‰ ensin numeron 3, ja sitten numeron 4. Huomaa ett‰ sana var esiintyy vain kun muuttuja esitell‰‰n ensimm‰isen kerran. T‰m‰n j‰lkeen muuttuja on jo olemassa ja sanaa var ei en‰‰ tarvita.
+
+
+
+
+
+Muuttujia voi myˆs laskea yhteen. Koulussa opittu pluslasku toimii kuten t‰h‰nkin menness‰.
+
+
+
+
+
+Yll‰ luodaan ensin muuttuja kolme, ja asetetaan siihen arvo 3. T‰m‰n j‰lkeen luodaan uusi muuttuja nimelt‰ nelja, ja asetetaan siihen arvo 4. T‰m‰n j‰lkeen luodaan uusi muuttuja seitseman, ja asetetaan siihen aiemmin m‰‰riteltyjen muuttujien (kolme ja nelja) arvojen summa.
+
+Muuttujien tyypit
+JavaScript, toisin kuin peruskursseillamme k‰ytetty Java, ei ole vahvasti tyypitetty ohjelmointikieli. T‰m‰ tarkoittaa sit‰, ett‰ ohjelmointikieli ei rajoita muuttujissa k‰ytett‰vien arvojen tyyppi‰. Muuttujan tyyppi voi olla numero, merkkijono tai vaikkapa funktio (palaamme t‰h‰n myˆhemmin...). Muuttujaan voi siis asettaa myˆs merkkijonon. Merkkijono aloitetaan ja lopetetaan hipsuilla ("").
+
+
+
+
+
+Merkkijonojen katenaatio eli yhdist‰minen onnistuu summamerkill‰ Javasta tutulla tavalla.
+
+
+
+
+
+Yll‰ muuttujaan summa asetetaan muuttujien eka ja toka liitos, eli merkkijono "23".
+
+Jos merkkijonot haluaa muuttaa luvuiksi, tulee muunnoksessa k‰ytt‰‰ JavaScriptin parseInt-funktiota. Komento parseInt muuttaa parametrina saadun merkkijonon kokonaisluvuksi.
+
+
+
+
+
+Arvojen vertaileminen ja lis‰‰ tyypeist‰
+
+Ohjelmiin tuodaan vaihtoehtoista toiminnallisuutta muuttujien ja vertailuoperaatioiden yhteistyˆll‰. Luodaan ohjelma, joka kysyy k‰ytt‰j‰lt‰ numeroa. Jos k‰ytt‰j‰n antama numero on 5, sanotaan "Oikein meni!". Vertailu onnistuu if-lauseella ja kahdella yht‰suuruusmerkill‰. Koska funktio prompt palauttaa merkkijonon, muunnetaan saatu luku numeroksi JavaScriptin parseInt-funktiolla.
+
+
+
+
+
+Jos haluamme sanoa "Oikein meni!" kun k‰ytt‰j‰ antaa numeron 5 tai 7, voimme tehd‰ erillisen else if-vertailun. Vertailu else if tulee aina vertailun if j‰lkeen, ja vertailua else if ei voi k‰ytt‰‰ ilman if-vertailua.
+
+
+
+
+
+Lauseita else if voi olla per‰kk‰in rajoittamaton m‰‰r‰. Ohjelmakoodissa voi k‰ytt‰‰ myˆs Javasta tuttuja || (tai) ja && (ja) -operaatioita vertailutulosten yhdist‰miseksi.
+
+
+
+
+
+Joskus haluamme tulostaa jotain, vaikka yksik‰‰n vertailu ei onnistuisi. T‰llˆin k‰yt‰mme ehtoa else, joka tarkoittaa "muutoin". Lis‰t‰‰n yll‰ olevaan luvun tarkistamiseen else-lause, joka suoritetaan kun yksik‰‰n aiemmista ehdoista ei onnistunut.
+
+
+
+
+
+Muutkin Javasta tutut vertailuoperaatiot ovat k‰ytˆss‰. Suurempi kuin > merkill‰ tarkistetaan onko luku suurempi kuin joku luku, ja pienempi kuin < merkill‰ tarkistetaan onko luku pienempi kuin joku luku. Tehd‰‰n ohjelma, joka kysyy ik‰‰, ja sanoo "Huijaat!", jos ik‰ on pienempi kuin 0 tai suurempi kuin 120. Muulloin ohjelma sanoo "Et huijannut! :)" .
+
+
+
+
+
+Yll‰ olemme vertailleet juurikin muuttujien arvoja. Vertailuoperaattorin == yksi p‰‰nvaivaa tuottava ominaisuus on se, ett‰ vertailuoperaatio ei v‰lit‰ muuttujan tyypist‰. Esimerkiksi seuraava vertailu tulostaa viestin "Ehdottomasti totta!".
+
+
+
+
+
+Jotta vertailussa otettaisiin huomioon myˆs muuttujan sen hetkinen tyyppi, k‰ytet‰‰n kolmatta yht‰suuri kuin -merkki‰. Jotta muuttujan tyypin saa otettua huomioon, tulee yht‰suuruusvertailu toteuttaa kolmella yht‰suuri kuin -merkill‰ (===).
+
+
+
+
+
+Sama p‰tee myˆs erisuuri kuin (!=) -vertailulle.
+
+Toistolauseet
+
+JavaScriptiss‰ on k‰ytˆss‰ for- ja while-toistolauseet.
+
+
+
+
+
+
+
+
+
+Funktiot, parametrit, ja arvon palauttaminen
+
+Funktioille voi antaa arvoja, joita voidaan k‰ytt‰‰ osana funktion l‰hdekoodia. T‰m‰ on k‰tev‰‰ erityisesti silloin, kun samanlaista toiminnallisuutta tehd‰‰n useassa paikassa: toiminnallisuudesta voi tehd‰ funktion, jota voi kutsua. Funktiot voivat myˆs palauttaa arvon, joka asetetaan muuttujaan -- muuttujaa taas voidaan k‰ytt‰‰ osana muuta ohjelmakoodia.
+
+Funktioiden parametrit toimivat seuraavasti:
+
+function tulostaViesti(viesti) {
+    alert(viesti);
+}
+Kun yll‰olevaa funktiota kutsutaan, sille tulee antaa parametri. Parametrille luodaan funktiokutsussa oma muuttuja viesti, johon parametrin arvo kopioidaan. Funktiota tulostaViesti suoritettaessa funktiolle alert annetaan aina sen arvon kopio, jonka funktio tulostaViesti saa parametrina.
+
+Funktiot voivat myˆs palauttaa arvon. Arvo palautetaan komennolla return, jota seuraa palautettava arvo. Seuraavassa esimerkiss‰ on funktio kysyNumeroJaTarkita kutsuu komentoa return jos k‰ytt‰j‰n syˆtt‰m‰ arvo ei ole numero. Jos komennolle return ei anna palautettavaa arvoa, funktiokutsusta poistutaan ilman arvon palauttamista.
+
+function kysyNumeroJaTarkista() {
+    var syote = prompt("Kirjoita numero");
+
+    if(isNaN(Number(syote))) {
+        alert("Et kirjoittanut numeroa!");
+        return;
+    }
+
+    numero = parseInt(syote);
+
+    if (numero == 5 || numero == 7) {
+        alert("Oikein meni!");
+    }
+}
+Muuttujien n‰kyvyys
+
+JavaScriptiss‰ muuttujilla on kaksi n‰kyvyystyyppi‰: paikallinen ja globaali. Paikalliset muuttujat ovat olemassa vain siin‰ funktiossa miss‰ ne on esitelty. Globaalit muuttujat ovat olemassa kaikkialla. Muuttujia voi esitell‰ ilman m‰‰rett‰ var, jolloin ne ovat globaaleja. T‰m‰ johtaa ennen pitk‰‰ kaaokseen. Testaa alla olevia koodeja, ja huomaa niiden ero!
+
+
+
+
+
+
+
+
+
+K‰yt‰ avainsanaa var aina kun esittelet muuttujan.
+
+Taulukot
+
+Taulukkotyyppisi‰ muuttujia voidaan luoda komennolla new Array(), jolle annetaan parametrina taulukon koko. Esimerkiksi seuraavassa luodaan 3 paikkaa sis‰lt‰v‰ taulukko. Taulukkomuuttujan indeksointi tapahtuu hakasuluilla.
+
+var salasanat = new Array(3);
+salasanat[0] = "salasana";
+salasanat[1] = "alasanas";
+salasanat[2] = "lasanasa";
+Jos taulukon arvot tiedet‰‰n ennalta, voidaan taulukko luoda myˆs suoraan konstruktorikutsussa.
+
+var salasanat = new Array("salasana", "alasanas", "lasanasa");
+Taulukot voivat sis‰lt‰‰ myˆs erityyppisi‰ muuttujia.
+
+var tiedot = new Array("Mikke", 1984);
+Oliot
+
+Taulukoiden lis‰ksi JavaScriptiss‰ tiedon k‰sittelyyn k‰ytet‰‰n Object-tyyppisi‰ muuttujia, eli olioita. Olio luodaan komennolla new Object(), jonka j‰lkeen oliolle voi asettaa arvoja.
+
+var mikke = new Object();
+mikke.nimi = "Mikke";
+mikke.syntymavuosi = 1984;
+Olioiden luontiin liittyy myˆs hieman kevyempi syntaksi, joka saattaa olla joillekin palvelinohjelmointi-kurssilla olleille tutun n‰kˆinen.
+
+var mikke = {nimi: "Mikke", syntymavuosi: 1984};
+Olioiden rakenne ei ole ennalta m‰‰r‰tty. Voimme esimerkiksi luoda muuttujalle mikke vaimon helposti.
+
+var mikke = {nimi: "Mikke", syntymavuosi: 1984};
+
+/* miken vaimo on ikinuori */
+var kate = {nimi: "Kate", syntymavuosi: new Date().getFullYear() - 21};
+
+mikke.vaimo = kate;
+
+/* nyt voimme kysy‰ miken vaimon nime‰ seuraavasti */
+alert(mikke.vaimo.nimi);
+
+
+
+
+Web-sivun elementtien arvojen k‰sittely
+
+Palataan web-maailmaan. JavaScripti‰ k‰ytet‰‰n ennenkaikkea dynaamisen toiminnallisuuden lis‰‰miseksi web-sivuille. Esimerkiksi web-sivuilla oleviin elementteihin tulee pysty‰ asettamaan arvoja. JavaScriptiss‰ p‰‰see k‰siksi dokumentissa oleviin elementteihin komennolla document.getElementById("tunnus"), joka palauttaa elementin, jonka id-attribuutti on "tunnus".
+
+Alla olevassa esimerkiss‰ on luotu tekstikentt‰, jonka HTML-koodi on <input type="text" id="tekstikentta"></input>. Kent‰n tunnus on siis tekstikentta. Javascriptill‰ on komento document.getElementById("tunnus"), jonka avulla voidaan hakea tietyn nimist‰ elementti‰. Tekstikentt‰elementill‰ on attribuutti value, joka voidaan tulostaa.
+
+
+
+
+
+
+
+Tekstikent‰lle voidaan asettaa arvo kuten muillekin muuttujille. Alla olevassa esimerkiss‰ haetaan edellisen esimerkin tekstikentt‰, ja asetetaan sille arvo 5.
+
+
+
+
+
+Tehd‰‰n viel‰ ohjelma, joka kysyy k‰ytt‰j‰lt‰ syˆtett‰, ja asettaa sen yll‰ olevan tekstikent‰n arvoksi.
+
+
+
+
+
+Arvon asettaminen osaksi teksti‰
+
+Yll‰ tekstikent‰lle asetettiin arvo sen value-attribuuttiin. Kaikilla elementeill‰ ei ole value-attribuuttia, vaan joillain n‰ytet‰‰n niiden elementin sis‰ll‰ oleva arvo. Elementin sis‰lle asetetaan arvo muuttujaan liittyv‰ll‰ attribuutilla innerHTML. T‰ss‰ alapuolella on esimerkiksi p-elementti, jonka id on js-hidden-p-element, ja jolla ei ole mit‰‰n arvoa.
+
+
+
+
+
+Vastaavasti tekstin keskelle voi myˆs asettaa arvoja. Elementti span on t‰h‰n aivan mainio. T‰m‰ teksti on span-elementin sis‰ll‰, jonka tunnus on "spanelementti".
+
+
+
+
+
+Case: Laskin
+
+Luodaan oma laskin. Laskimella on kaksi toiminnallisuutta: pluslasku ja kertolasku. Luodaan ensin laskimelle javascriptkoodi, joka on tiedostossa laskin.js. Javascript-koodissa oletetaan, ett‰ on olemassa input-tyyppiset elementit tunnuksilla "eka" ja "toka" sek‰ span-tyyppinen elementti tunnuksella "tulos". Funktiossa plus haetaan elementtien "eka" ja "toka" arvot, ja asetetaan pluslaskun summa elementin "tulos" arvoksi. Kertolaskussa tehd‰‰n l‰hes sama, mutta tulokseen asetetaan kertolaskun tulos. Koodissa on myˆs apufunktio, jota k‰ytet‰‰n arvojen muuttamiseksi numeroiksi.
+
+function haeNumero(tunnus) {
+    return parseInt(document.getElementById(tunnus).value);
+}
+
+function asetaTulos(tulos) {
+    document.getElementById("tulos").innerHTML = tulos;
+}
+
+function plus() {
+    asetaTulos(haeNumero("eka") + haeNumero("toka"));
+}
+
+function kerto() {
+    asetaTulos(haeNumero("eka") * haeNumero("toka"));
+}
+Laskimen k‰ytt‰m‰ HTML-dokumentti n‰ytt‰‰ seuraavalta:
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" ></meta>
+    	<title>Laskin</title>
+    </head>
+    <body>
+        <header>
+            <h1>Plus- ja Kertolaskin</h1>
+        </header>
+
+        <section>
+            <p>
+                <input type="text" id="eka" value="0"/ >
+                <input type="text" id="toka" value="0" />
+            </p>
+
+            <p>
+                <input type="button" value="+" onclick="plus();" />
+                <input type="button" value="*" onclick="kerto();" />
+            </p>
+
+
+            <p>Laskimen antama vastaus: <span id="tulos"></span></p>
+        </section>
+
+        <script src="laskin.js"></script>
+    </body>
+</html>
+Laskin itsess‰‰n n‰ytt‰‰ seuraavalta:
+
+Plus- ja Kertolaskin
+
+  
+
+  
+
+Laskimen antama vastaus:
+
+Laskimen jatkokehitys
+
+Yll‰ oleva laskin tulee mukana teht‰v‰pohjassa. Teht‰v‰n‰si on ensin lis‰t‰ laskimelle myˆs miinus- ja jakolaskut. Kun miinus- ja jakolasku toimii, integroi visualisoinnista tykk‰‰v‰n kaverisi alla oleva koodi osaksi laskimen toimintaa. Alla oleva koodi lis‰‰ laskimeen piirtoelementin, sek‰ piirt‰‰ ruudulle liikkuvan neliˆn, jonka vauhti riippuu tuloksesta.
+
+        <section>
+            <canvas id="alusta" width="300" height="200" ></canvas>
+        </section>
+window.requestAnimFrame = (function(){
+    return window.requestAnimationFrame       || 
+           window.webkitRequestAnimationFrame || 
+           window.mozRequestAnimationFrame    || 
+           window.oRequestAnimationFrame      || 
+           window.msRequestAnimationFrame     || 
+           function(/* kutsuttava funktio */ callback, /* elementti */ element){
+               window.setTimeout(callback, 1000 / 60);
+           };
+    })();
+  
+
+function ajasta() {
+    piirra();
+    requestAnimFrame( ajasta );
+}
+
+function piirra() {
+    var piirturi = document.getElementById("alusta").getContext("2d");
+    var nopeus = parseInt(document.getElementById("tulos").innerHTML);
+    if(!nopeus) {
+        nopeus = 2;
+    }
+    
+    if(nopeus < 0) {
+        nopeus = 1 / (nopeus * -1);        
+    }
+    
+    var aika = new Date().getTime() * 0.001 * nopeus;
+    var x = Math.sin( aika ) * 100 + 125;
+    
+    //  piirret‰‰n ensin valkoinen tausta
+    piirturi.fillStyle = "rgb(255, 255, 255)";
+    piirturi.fillRect( 0, 0, 300, 200 );
+    
+    // ja sitten neliˆ
+    piirturi.fillStyle = "rgb(255,0,0)";
+    piirturi.fillRect(x, 50, 50, 50);
+}
+
+ajasta();
+      
+Kun olet valmis, ja sivun ladatessa n‰et liikkuvan punaisen neliˆn, jonka vauhti riippuu laskimen tuloksesta, palauta teht‰v‰ TMC:lle.
+
+Case: Tyylien muuttaminen JavaScriptill‰
+
+JavaScripti‰ voi k‰ytt‰‰ myˆs tyylien muokkaamiseen. Attribuutin class arvoa voi muuttaa dokumentista saatavan olion attribuutilla className. Tehd‰‰n viel‰ esimerkki, jossa sivulla oleva tieto vaihtuu linkki‰ klikkaamalla, mutta selain ei oikeasti siirry sivulta toiselle. Luodaan ensiksi HTML-dokumentti, jossa on valmiiksi paikat tyylitiedostolle style.css ja l‰hdekoodille script.js.
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" ></meta>
+    	<title></title>
+        <link rel="stylesheet" href="style.css" type="text/css" />
+    </head>
+    <body onload="init();" >
+        <header>
+            <h1>Kindler</h1>
+            
+            <nav>
+                <!-- komento return false; est‰‰ selaimen siirtymisen toiselle sivulla -->
+                <a href="#" onclick="displayArticle(0);return false;">Eka artikkeli</a>
+                <a href="#" onclick="displayArticle(1);return false;">Toka artikkeli</a>
+            </nav>
+        </header>
+
+        <article>
+	  <h1>Eka artikkeli</h1>
+
+	  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+	</article>
+	
+        <article>
+	  <h1>Toka artikkeli</h1>
+
+	  <p>Morbi a elit enim, sit amet iaculis massa. Vivamus blandit...</p>
+	</article>
+
+        <article>
+	  <h1>Kolmas artikkeli</h1>
+
+	  <p>Now that we know who you are, I know who I am. I'm...</p>
+	</article>
+
+
+        <script src="script.js"></script>
+    </body>
+</html>
+Luodaan seuraavaksi sivulle tyylitiedosto. M‰‰ritell‰‰n article-elementille tyyliluokka "hidden": jos article-elementill‰ on tyyliluokka hidden, sit‰ ei n‰ytet‰ selaimessa.
+
+article.hidden {
+    display: none;
+}
+Luodaan seuraavaksi JavaScript-toiminnallisuus. Emme k‰sittele sivua tunnusten avulla, vaan k‰yt‰mme elementtien l‰pik‰yntiin niiden tyyppej‰. Haluamme k‰yt‰nnˆss‰ k‰sitell‰ kaikkia sivulla olevia article-elementtej‰. T‰h‰n on k‰tev‰ komento document.getElementsByTagName("elementinNimi"), joka palauttaa taulukon elementeist‰, joiden elementin nimi on "elementinNimi". Haluamme myˆs, ett‰ kun sivu on ladattu, n‰ytet‰‰n vain ensimm‰inen artikkeli. T‰t‰ varten body-elementille on olemassa attribuutti onload, jolle voi m‰‰ritell‰ funktion nimen, jota kutsutaan kun sivun lataaminen on valmis.
+
+function init() {
+    displayArticle(0);
+}
+
+function displayArticle(index) {
+    var articles = document.getElementsByTagName("article");
+
+    for(var i = 0; i < articles.length; i++) {
+        if (index == i) {
+            articles[i].className='';
+        } else {
+            articles[i].className='hidden';
+        }
+    }
+}
+Voit tutustua valmiin sivun toiminnallisuuteen t‰‰ll‰.
+
+PerusMOOC (3p)
+
+Huom! T‰m‰ teht‰v‰ on kolmen pisteen arvoinen: palauta se vain jos teet teht‰v‰n kokonaan.
+
+Teht‰v‰ss‰ on k‰ytetty seuraavia v‰rej‰:
+
+rgb(233, 229, 217);
+rgb(73, 69, 69);
+rgb(66, 126, 120);
+Fonttien m‰‰rittely on muotoa
+
+    font-family: 'Trebuchet MS', Trebuchet, Arial, sans-serif;
+Teht‰v‰n mukana tuleva sivu n‰ytt‰‰ seuraavanlaiselta:
+
+
+Teht‰v‰n‰si on ensin lis‰t‰ sivulle tyylitiedosto, jonka avulla sivusta tulee seuraavann‰kˆinen. Kun lis‰‰t tyylitiedostoa, lis‰‰ valikkoon myˆs toiminnallisuus, jonka avulla linkin tausta muuttuu kun hiiri on sen p‰‰ll‰.
+
+
+Kun tyylit ovat valmiit, lis‰‰ sivulle toiminnallisuus, jossa vain ensimm‰inen osio n‰kyy ensin. Linkkej‰ klikkaamalla sivulla vaihdetaan osiosta toiseen. Alla olevassa kuvassa osiota "Materiaali" on juuri klikattu.
+
+
+Kun olet valmis, ja sivusi n‰ytt‰‰ oikealta Chromessa, palauta teht‰v‰ TMC:lle.
+
+DOM
+
+DOM (Document Object Model) on ohjelmointirajapinta HTML (ja XML) -dokumenttien rakenteen ja sis‰llˆn muokkaamiseksi. Se sis‰lt‰‰ kuvauksen HTML-dokumentin elementeist‰ ja niiden asemoinnista dokumentissa. HTML-dokumentti kuvataan usein puumaisena tietorakenteena, jossa jokainen sivun elementti on puun solmu (oksa) tai lehti (solmu, josta ei l‰hde oksia). Jokaisella elementill‰ on myˆs nimi, jolla siihen p‰‰see k‰siksi.
+
+Suurin osa nykyaikaisista web-selaimista toteuttaa W3C DOM-standardin, sek‰ usein tarjoavat omia lis‰v‰lineit‰ dokumenttien muokkaamiseen. W3C DOM-standardi sis‰lt‰‰ esimerkiksi aiemmin k‰ytt‰m‰mme kutsun document.getElementById("tunnus"), jonka avulla p‰‰st‰‰n k‰siksi dokumentin sis‰lt‰m‰‰n elementtiin, jonka attribuutin id arvo on "tunnus".
+
+HTML-dokumentin elementit ja niihin liittyv‰t ominaisuudet (attribuutit, tapahtumat, ...) on j‰sennelty erilaisiin olioihin. Osaan p‰‰see k‰siksi suoraan. Esimerkiksi window-oliolla p‰‰st‰‰n k‰siksi mm. selainikkunassa tapahtuviin tapahtumiin (esim. n‰pp‰imistˆn kuuntelu), document-olio taas liittyy HTML-dokumenttiin ja sen sis‰lt‰miin elementteihin. Kaikkiin dokumentin elementteihin p‰‰see k‰siksi document-elementin kautta.
+
+Esimerkiksi dokumentissa olevan canvas-elementin saa haettua siihen liittyv‰ll‰ tunnuksella document-oliota k‰ytt‰en. Mozillan sovelluskehitt‰jien sivustolla on hyv‰ kuvaus elementteihin liittyvist‰ rajapinnoista, kts. https://developer.mozilla.org/en-US/docs/Gecko_DOM_Reference#HTML_element_interfaces.
+
+DOM-standardi sis‰lt‰‰ useita tasoja, eli versioita. Taso 1 sis‰lt‰‰ mm. dokumentin elementtien luomisen sek‰ hakemisen getElementsByTagName-komennolla. Kutsu getElementsByTagName attribuutilla * palauttaa listan, joka sis‰lt‰‰ kaikki sivun elementit. L‰hes kaikki nyky‰‰n k‰ytˆss‰ olevat selaimet tukevat tason 1 toiminnallisuutta. Taso 2 sis‰lt‰‰ mm. tuen dokumentin tyylien muokkaamiseen DOM-puun kautta sek‰ erilaisten tapahtumien (mm. hiiri, n‰pp‰imistˆ) k‰sittely‰ tukevan j‰rjestelm‰n. Taso 3 laajentaa tason 2 toiminnallisuutta mm. dokumentin elementtien ja tapahtumien k‰sittelyss‰.
+
+DOM-spesifikaatio sis‰lt‰‰ useita eri komponentteja. Alla kuva DOM-arkkitehtuurista.
+
+
+
+W3C tyˆskentelee t‰ll‰ hetkell‰ (1.11.2012) tason 4 spesifikaation kanssa. Taso 4 tulee olemaan laajennus aiempiin tasoihin, joka tarjoaa mm. selvennyksi‰ tapahtumien k‰sittelyyn ja lis‰toiminnallisuuksia dokumentin identifiointiin.
+
+Selaintuki
+
+Uusimpien DOM-spesifikaatioiden ja lis‰osien tuki on rikkin‰inen osassa selaimia. Selainvalmistajat eiv‰t usein kiinnit‰ huomiota vanhempiin selainversioihin, jolloin uudet ominaisuudet ovat k‰ytˆss‰ vasta uudemmissa selaimissa. Sivusto "Can I Use..." (http://caniuse.com on yksi monista sivustoista, jotka tarjoavat spesifikaatioiden ja lis‰osien yhteensopivuuslistauksia eri selaimille.
+
+Elementtien valinta
+
+Olemme k‰ytt‰neet dokumentin getElementById-kutsua tietyn elementin hakemiseen. Kaikki sivun elementit voi taas hakea esimerkiksi getElementsByTagName("*")-kutsulla. Molemmat ovat kuitenkin hieman kˆmpelˆj‰ jos tied‰mme mit‰ haluamme hakea verrattuna esimerkiksi CSS:n k‰ytt‰m‰‰n elementtien valintatyyliin (kts. http://www.w3.org/TR/selectors/#selectors.
+
+W3C DOM-m‰‰rittely sis‰lt‰‰ myˆs paremman ohjelmointirajapinnan elementtien l‰pik‰yntiin. Selectors API sis‰lt‰‰ mm. querySelector-kutsun, jolla saadaan CSS-valitsinten kaltainen kyselytoiminnallisuus.
+
+Selector APIn tarjoamien querySelector (yksitt‰isen osuman haku) ja querySelectorAll (kaikkien osumien haku) -komentojen avulla kyselyn rajoittaminen vain header-elementiss‰ oleviin a-elementteihin on helppoa.
+
+var linkit = document.querySelectorAll("nav a");
+// linkit-muuttuja sis‰lt‰‰ nyt kaikki a-elementit, jotka ovat nav-elementin sis‰ll‰
+Vastaavasti header-elementin sis‰ll‰ olevat linkit voi hakea seuraavanlaisella kyselyll‰.
+
+var linkit = document.querySelectorAll("header a");
+// linkit-muuttuja sis‰lt‰‰ nyt kaikki a-elementit, jotka ovat header-elementin sis‰ll‰
+Myˆs tietyn luokan toteuttavien elementtien haku on helppoa. Alla olevassa esimerkiss‰ on kolme tekstikentt‰‰, joista 2 on piilotettu. Piilotettujen tekstikenttien tyyliluokka on dom-esim-1-hidden.
+
+text 2
+
+
+
+
+
+Voimme hakea querySelectorin avulla myˆs elementtej‰, joilta puuttuu tietty ominaisuus. Alla haemme kaikki tyyliluokan dom-esim-2 toteuttavan elementin sis‰ll‰ olevat p-elementit, joilla ei ole tyyliluokkaa dom-esim-2-hidden. Lopuksi lis‰‰mme kyselyss‰ lˆydetyille elementeille tyyliluokan dom-esim-2-hidden, jolloin elementit piilotetaan.
+
+Alla olevan sivun l‰hdekoodi on seuraavanlainen (tyyliluokkien oudot nimet johtuvat t‰m‰n dokumentin rakenteesta -- haluamme ett‰ esimerkit eiv‰t vaikuta toisiin esimerkkeihin).
+
+  <article class="dom-esim-2">
+    <p class="dom-esim-2-hidden">text 1</p>
+    <p>text 2</p>
+    <p class="dom-esim-2-hidden">text 3</p>
+  </article>
+text 2
+
+
+
+
+
+Mit‰ k‰y jos poistat yll‰olevasta kyselyst‰ alkuosan dom-esim-2 ja suoritat kyselyn? Pohdi ennen kokeilemista!
+
+Elementtien lis‰‰minen
+
+HTML-dokumenttiin lis‰t‰‰n uusia elementtej‰ document-olion createElement-metodilla. Esimerkiksi alla luodaan p-elementti, joka asetetaan muuttujaan tekstiElementti. T‰m‰n j‰lkeen luodaan tekstisolmu, joka sis‰lt‰‰ tekstin "o-hai". Lopulta tekstisolmun lis‰t‰‰n tekstielementtiin.
+
+var tekstiElementti = document.createElement("p");
+var tekstiSolmu = document.createTextNode("o-hai");
+
+tekstiElementti.appendChild(tekstiSolmu);
+Yll‰oleva esimerkki ei luonnollisesti muuta HTML-dokumentin rakennetta sill‰ uutta elementti‰ ei lis‰t‰ osaksi HTML-dokumenttia. Olemassaoleviin elementteihin voidaan lis‰t‰ sis‰ltˆ‰ elementin appendChild-metodilla. Alla olevan tekstialue sis‰lt‰‰ article-elementin, jonka tunnus on dom-esim-3. Voimme lis‰t‰ siihen elementtej‰ elementin appendChild-metodilla.
+
+
+
+
+
+Artikkelielementin sek‰ sen sis‰lt‰mien tekstielementtien lis‰‰minen onnistuu vastaavasti. Alla olevassa esimerkiss‰ k‰ytˆss‰mme on seuraavanlainen section-elementti.
+
+<!-- .. dokumentin alkuosa .. -->
+    <section id="dom-esim-4"></section>
+<!-- .. dokumentin loppuosa .. -->
+Uusien artikkelien lis‰‰minen onnistuu helposti aiemmin n‰kem‰ll‰mme createElement-metodilla.
+
+
+
+
+
+DOM Walker
+
+Luo teht‰v‰pohjaan koodi, joka k‰y l‰pi kaikki sivun body-elementin sis‰ll‰ olevat elementit, ja tulostaa niiden t‰gien nimet elementtiin, jonka tunnus on "dom". ƒl‰ tulosta "dom"-tunnuksella varustettuun elementtiin "dom"-tunnuksellista elementti‰ tai sen sis‰ll‰ olevia elementtej‰. Koodi tulee suorittaa kun sivu on ladattu.
+
+Teht‰v‰pohjan mukana olevan sivun kanssa koodi tulostaa sivun loppuun seuraavanlaisen listan elementtej‰. Voit k‰ytt‰‰ p-elementti‰ t‰gien nimien erotteluun.
+
+HEADER
+
+H1
+
+NAV
+
+UL
+
+LI
+

@@ -1,0 +1,95 @@
+Kurssin suorittaminen
+Kurssin työmäärä on opintopisteiden perusteella n. 104 tuntia ja kurssi on vain 4 viikon pituinen (eikä jouluviikolla ole ohjausta). Varaudu siis käyttämään työhön useita tunteja viikossa jokaisella viikolla.
+ 
+Kursilla opiskelija toteuttaa ohjelman, joka ratkaisee jonkin ohjelmointiongelman. Ongelmanratkaisuun käytetään sopivia algoritmeja sekä tietorakenteita. Oppimismatriisin tiedoista poiketen, opiskelja valitsee ratkaistavan ongelman yhdessä ohjaajan kanssa. Suoritus ei edellytä oman algoritmin kehittämistä. Tämäkin on mahdollista, mikäli opiskelija haluaa haastavamman aiheen. Keskeistä työssä on, että ohjelma on toimiva ja tehokas. Sen tulee kaikissa tapauksissa antaa nopeasti oikea vastaus. Työn aiheesta riippuu, miten suuria tapauksia ohjelman tulee pystyä käsittelemään. Tämä sovitaan ohjaajan kanssa.
+ 
+Kurssi pidetään osittain verkkokurssina, kaikki viikoittaiset palautukset tapahtuvat verkon kautta. Ainoat pakolliset tapaamiset ovat alkutapaaminen 16.12.-18.12. välisenä aikana ja loppudemo joka järjestetään 9.1.2014 tai 10.1.2014.
+ 
+Ohjelma toteutetaan Java-kielellä, sen ohjelmointikäytänteitä noudattaen. Myös muiden kielten käyttö on mahdollista, perustelluista syistä. Kurssin yksi tavoite on oppia toteuttamaan itse tietorakenteita, ei käyttämään muiden toteuttamia. Tästä syystä tarvittavat algoritmit ja tietorakenteet tulee toteuttaa itse. Nyrkkisääntönä vain perustietotyyppejä, taulukoita ja merkkijonoja saa käyttää, muu on tehtävä itse, erityisesti Tietorakenteet-kurssilla opetellut rakenteet. Javan muita apuvälineitä, kuten tiedostonkäsittelyluokkia, saa tietenkin käyttää. Javan valmiita tietorakenteita (ArrayList, HashMap...) tai algoritmeja (esim. Collections.sort) ei saa käyttää lopullisessa työssä. Jos olet epävarma jonkin luokan käyttämisestä, kysy ohjaajalta. 
+ 
+Hyväksi koettu tapa tehdä työ vaiheittain on laittaa ensin kuntoon algoritmin ydin käyttäen Javan valmista kalustoa (jonot, keot, järjestämisalgoritmit). Kannattaa siis pyrkiä toteuttamaan algoritmin ydin nopeasti ja sen jälkeen korvata käytetty kalusto omilla toteutuksilla. Eli toteuttaa rajapintojen takana olevat rakenteet ja/tai algoritmit itse.  Tätä tapaa käytetään osapalautusten pohjana algoritmin/tietorakenteiden kehityksen osalta. Mikäli toteutat työn erilaisella lähestymistavalla, sovi työn edistymisen "Milestone":t jo 1. viikon aikana ohjaajan kanssa.
+
+Aiheen voi keksiä itse, tai valita alla olevasta listasta itselleen mielenkiintoinen aihe. Listalla olevat aiheet ovat vain ehdotuksia, niitä voi muokata ja kehittää - lopullinen aihe sovitaan yhdessä ohjaajan kanssa.
+ 
+ 
+ 
+Verkot ja polunesintä
+Miten löydetään tehokkaasti nopein/lyhyein reitti labyrintistä ulos. Labyrintti voi olla tehty esimerksi ascii-merkeistä tai piirretty kuva.
+ 
+Miten löydetään tehokkaasti nopein/lyhyin reitti verkossa kahdeen pisteen välillä. Verkon pisteet voivat olla esimerkiksi katuosoitteita, joukkoliikenteen pysäkkejä tai koordinaatteja. Hyvä artikkeli aiheesta: http://theory.stanford.edu/~amitp/GameProgramming/AStarComparison.html
+ 
+Rahtifirma NopsaToimitus haluaa saada paketit perille mahdollisimman nopeasti ja vähillä polttoainekustannuksilla. Suunnittele miten voidaan laskea reitti toimitusautolle, niin että kaikki paketit tulee toimitettua perille mahdollisimman lyhyellä ajomatkalla. Kussakin toimistuspaikassa käydään vain kerran.
+ 
+ 
+ 
+Tiedon tiivistys
+Tiedosto tulisi saada mahtumaan pienempään tilaan, miten tämä onnistuu? Toivottava lopullinen koko on 40-60% alkuperäisestä koosta. Tiedosto pitää myös pysytä avaamaan alkuperäiseen muotoon myöhemmin.
+ 
+ 
+Tekoälyt
+Shakki, go (laajennettu risti-nolla) ja  ovat hauskoja ja haastavia pelejä. Niitä olisi kiva pelata tietokonetta vastaan, tehtävänäsi on kehittää valitsemallesi pelille tekoäly. Tekoälyn pitää pystyä pelamaan niin ihmistä kuin itseään vastaan.
+ 
+Kehitä Muurahaisten taistoon tekoäly. Googlen AI Challenge 2011: http://aichallenge.org/problem_description.php
+ 
+Kivi-sakset-paperi on kaikille tuttu peli. Onnistutko toteuttamaan tekoälyn, joka päihittää ohjaajan? Kun tekoälysi on hyvä voit jatkaa kehitystä ottamalla mukaan vielä kaksi vaihtoehtoa: Lisko ja Spock. http://upload.wikimedia.org/wikipedia/commons/a/ad/Pierre_ciseaux_feuille_l%C3%A9zard_spock_aligned.svg sekä http://www.youtube.com/watch?v=x5Q6-wMx-K8
+ 
+ 
+ 
+Tietorakennevertailut
+Tietorakenteita on monenlaisia, mikä olisi paras kuhunkin ongelmaan? Vertaile neljää eri tietorakennetta (esimerkiksi puita tai kekoja), joita ei ole käsitelty Tietorakenteet ja Algoritmit kurssilla. Tutki missä tilanteessa kukin on paras, eli missä tilanteessa käyttäisit kutakin rakennetta.
+ 
+ 
+Muuta kivaa
+Rahtifirma NopsaToimitus haluaa optimoida konttikuljetuksissa käytettävän tilan. Suunnittele miten voidaan täyttää yksi tai useampi kontti mahdollisimman tehokkaasti, jos tiedetään pakettien määrä ja koot. Ideaa voi hakea kuutiopalapelin ratkaisijasta.
+ 
+Suunnittele säännöllisten lauseiden tulkki. Miksi? Loistava vastaus: http://blog.stevenlevithan.com/archives/10-reasons-to-learn-and-use-regular-expressions
+ 
+Matriisien laskenta käsin on rankkaa puuhaa. Suunnittele matriisilaskin joka osaa perusoperaatioiden lisäksi lasken matriisin determinantin.
+
+Dokumentaatio
+ 
+Huom: kaikki dokumentit palautetaan .pdf-muodossa!
+ 
+Koodin lisäksi tehtävänä on neljä dokumenttia: määrittelydokumentti, toteutusdokumentti, käyttöohje ja testausdokumentti. Dokumenttien merkitys kurssilla on kuitenkin vähäinen: olennainen asia on toimiva ja tehokas koodi! Työn tekemisessä ja arvostelussa painotetaan laitoksen muita harjoitustöitä vähemmän dokumentointia. Ohjelmakoodin on kuitenkin oltava mahdollisimman selkeää, metodien on oltava lyhyitä, luokkien, muuttujien ja metodien on oltava kuvaavasti nimettyjä ja ohjelman rakenteen muutenkin kaikin puolin selkeä.  
+ 
+Koodin tulee olla kirjoitettu mahdollisimman selkeästi ja ymmärrettävästi. Kommentoi koodiasi kattavasti, mutta napakasti. Jokainen luokka, metodi ja artribuutti ei välttämättä kaipaa kommenttia, mutta kaikki olennainen ja vähemmän kuin itsestään selvä on oltava selostettu kommenteissa. Sisällytä metodien kommentteihin niiden parametrien ja paluuarvon merkitykset. Metodien sisäinen kommentointi ei ideaalitapauksessa pitäisi olla tarpeen, sillä metodien tulee olla kuvaavasti nimettyjä, kompakteja ja yksinkertaisia, helposti hahmotettavia kokonaisuuksia. Mikäli metodin toimintaa kuitenkin on vaikea hahmottaa pelkän koodin ja metodin yleiskommentin perusteella, voidaan sen koodia kommentoida sisäisestikin.
+ 
+JavaDoc-kommentointia käytetään kaikissa töissä, jotka toteutetaan Javalla. NetBeans toteuttaa pyydettäessä luokille ja metodeille JavaDoc-kommenttien pohjat. Mikäli teet työsi jollakin muulla kielellä, sovi käytetystä kommentoitityylistä ohjaajan kanssa jo alkutapaamisessa.
+ 
+Huomaa että jokaisen dokumentin pituus on n. 1-2 A4, poislukien kuvat ja taulukot (todellinen pituus voi olla siis jopa 3-4 sivua).
+ 
+Vaaditut dokumentit:
+ 
+ 
+Määrittelydokumentti
+Mitä algoritmeja ja tietorakenteita toteutat työssäsi
+Mitä ongelmaa ratkaiset ja miksi valitsit kyseiset algoritmit/tietorakenteet
+Mitä syötteitä ohjelma saa ja miten näitä käytetään
+Tavoitteena olevat aika- ja tilavaativuudet (m.m. O-analyysi)
+Lähteet
+ 
+Toteutusdokumentti
+Ohjelman yleisrakenne
+Saavutetut aika- ja tilavaativuudet (m.m. O-analyysi pseudokoodista)
+Suorituskyky- ja O-analyysivertailu (mikäli työ vertailupainotteinen)
+Työn mahdolliset puutteet ja parannusehdotukset
+Lähteet
+ 
+Käyttöohje
+Miten ohjelma suoritetaan, miten eri toiminnallisuuksia käytetään
+Minkä muotoisia syötteitä ohjelma hyväksyy
+Missä kansiossa on jar ja ajamiseen tarvittavat testitiedostot.
+ 
+Testausdokumentti
+Mitä on testattu, miten tämä tehtiin
+Minkälaisilla syötteillä testaus tehtiin (vertailupainotteisissa töissä tärkeätä)
+Miten testit voidaan toistaa
+Ohjelman toiminnan empiirisen testauksen tulosten esittäminen graafisessa muodossa.
+Testaus on ideaalitapauksessa suoritettava ohjelma. Tällöin testi on helposti toistettavissa, mikä helpottaa toteutuksen tekoa jo varhaisessa vaiheessa. On erittäin suositeltavaa käyttää testaukseen JUnitia.
+
+Lopullisen palautuksen sisältö
+ 
+Työstä tulee palauttaa lähdekoodit, toteutusdokumentti, käyttöohjeet sekä muut tarpeelliset tiedostot pakattuna yhteen tiedostoon (.zip) (tämän saa suoraan githubista). Javalla toteutetuista töistä tulee palauttaa myös jar-tiedosto, jonka generointi ainakin NetBeansilla on vaivatonta. Työn tulee olla ajettavissa ilman kääntämistä tai muita ennakkotoimenpiteitä, tarvittaessa luo yksi script joka hoitaa kaiken tarvittavan.
+Testaukseen käytettävät testisyötteet ja -ohjelmat kannattaa palauttaa. Työn tulee olla käännettävissä ja ajettavissa Tietojenkäsittelytieteen laitoksen koneilla joko Windowsilla tai Linuxilla. Työn kääntäminen ja ajaminen tulisi onnistua mukana toimitettavien käyttöohjeiden avulla. Dokumentit tulee palauttaa .pdf -muotoisina.
+Työn on oltava valmis viimeistään sunnuntaina 12.1. klo 23.59, työ on käytävä demoamassa ennen palautusta. Palautetuksi työksi luetaan viimeisin versionhallintaan lisätty versio ennen edellä mainittua aikarajaa. Myöhemmin lisättyjä töitä ei arvostella.
+
